@@ -1,0 +1,801 @@
+%%% Preamble starts here.
+\documentclass{amsart}
+%for the heading
+\usepackage{fancyhdr, enumerate}
+%for the picture. 
+\usepackage{tikz}
+%adjust the page width
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\linespread{1.1}
+
+%special commands for number sets
+\def\RR{{\mathbb R}}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\CC{{\mathbb C}}
+
+% header
+\lhead{\sc  Linear Algebra: Homework 1}
+\chead{\sc Stefano Fochesatto } 
+\rhead{\today}
+\cfoot{}
+\pagestyle{fancy}
+
+%%%% Main document starts here.
+
+\begin{document}
+\thispagestyle{fancy}
+
+
+{\huge\textbf{Section 1.1:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 1.1.6: }Consider each matrix in Exercises 5 and 6 as the augmented matrix
+of a linear system. State in words the next two elementary row operations that should be performed in the process of solving the system.
+\begin{equation}
+\begin{bmatrix} 
+1&-6&4&0&1\\
+0&2&-7&0&4\\
+0&0&1&2&-3\\
+0&0&3&1&6
+\end{bmatrix}
+\end{equation}
+ 
+\noindent \textbf{Solution: }
+The first row operation that has to happen is, row replacement wherein we want to make the leading 3 in $r_4$ to be a zero. To do so we multiply  $r_3$ by -3 and then add it to row 4. The result is the following matrix,
+\begin{equation}
+\begin{bmatrix} 
+1&-6&4&0&1\\
+0&2&-7&0&4\\
+0&0&1&2&-3\\
+0&0&0&-5&15
+\end{bmatrix}
+\end{equation}
+ The second row operation is to scale $r_4$ by a factor of -5. This isn't absolutely necessary but it will serve to illuminate the solution for us. Doing so we get the following matrix, which gives a clear solution to $x_4$.
+\begin{equation}
+\begin{bmatrix} 
+1&-6&4&0&1\\
+0&2&-7&0&4\\
+0&0&1&2&-3\\
+0&0&0&1&-3
+\end{bmatrix}
+\end{equation}
+
+
+
+
+
+
+
+
+\vspace{1in}
+
+
+
+
+
+
+
+%%%second problem
+\noindent\textbf{Exercise 1.1.12: }Solve the system.
+\begin{align}
+x_{1}-3x_{2}+4x_{3}&=-4\\
+3x_{1}-7x_{2}+7x_{3}&=-8\\
+-4x_{1}+6x_{2}-x_{3}&=7
+\end{align}
+
+\noindent \textbf{Solution: }
+First note that the given system is linear, by the definition of a linear equation. The next step is to put the system in the form of an augmented matrix. Doing so we get the following matrix,
+
+\begin{equation}
+\begin{bmatrix} 
+1&-3&4&-4\\
+3&-7&7&-8\\
+-4&6&-1&7
+\end{bmatrix}
+\end{equation}
+
+Now we need to simplify this matrix in order to see if it has either one solution, infinitely many solutions or no solutions. The first row operation we want to perform is row replacement because we want the leading 3 in $r_2$ and the leading -4 in $r_3$ to be zeroes. To do so we perform the following operations,
+
+\begin{equation}
+\begin{bmatrix} 
+1&-3&4&-4\\
+0&2&-5&4\\
+-4&6&-1&7
+\end{bmatrix},   -3r_1+r_2
+\end{equation}
+\begin{equation}
+\begin{bmatrix} 
+1&-3&4&-4\\
+0&2&-5&4\\
+0&-6&15&-9
+\end{bmatrix},   4r_1+r_3
+\end{equation}
+
+From here we need to do row replacement again because we want to get rid of the leading -6 in $r_3$. Here is the operation for that,
+\begin{equation}
+\begin{bmatrix} 
+1&-3&4&-4\\
+0&2&-5&4\\
+0&0&0&3
+\end{bmatrix},   3r_2+r_3
+\end{equation}
+Our simplified augmented matrix makes it clear to see that, the system is inconsistent because the final row corresponds to the equation,
+\begin{equation}
+(0)x_3=3
+\end{equation}
+So $0=3$ and $0\neq 3$. Thus a contradiction, therefore the system has no solution.
+
+
+
+
+
+
+
+
+
+
+\vspace{1in}
+
+
+
+
+
+
+%%%third problem
+\noindent\textbf{Exercise 1.1.20: } In Exercises 19–22, determine the value(s) of h such that the matrix is the augmented matrix of a consistent linear system. 
+\begin{equation}
+\begin{bmatrix} 
+1&h&-3\\
+-2&4&6
+\end{bmatrix}
+\end{equation}
+
+\noindent \textbf{Solution: }
+To determine the value of $h$ we must first try to solve the system. The first operation we need to perform is row replacement, to get rid of the leading -2 in $r_2$. Here is how,
+
+\begin{equation}
+\begin{bmatrix} 
+1&h&-3\\
+0&(2h)+4&0
+\end{bmatrix}, 2r_1+r_2
+\end{equation}
+From here our matrix says that,
+\begin{equation}
+(2h+4)x_2=0
+\end{equation}
+This tells us that $h$ can be any number and the system will still be consistent.
+
+
+
+\vspace{1in}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%fourth problem
+\noindent\textbf{Exercise 1.1.24: } In Exercises 23 and 24, key statements from this section are either quoted directly, restated slightly (but still true), or altered in some way that makes them false in some cases. Mark each statement True or False, and justify your answer. \\
+
+\begin{enumerate}[(a)]
+\item Elementary row operations on an augmented matrix never change the solution set of the associated linear system.\\
+
+\noindent \textbf{Answer: }
+True. First we must understand that all elementary row operations are reversible. Then suppose a system is changed to a new one via elementary row operations. We can recreate the original system by just doing the reverse row operations to the new system.
+
+
+\vspace{1in}
+
+\item Two matrices are row equivalent if they have the same number of rows\\
+
+\noindent \textbf{Answer: }
+False. "Two matrices are called row equivalent if there is a sequence of elementary row operations that transforms one matrix into the other."(p.6) Consider the following two matrices, [0 1 1] and [1 0 1]. They have the same number of row(s) yet there is no elementary row operation which will take one and transform it into another. 
+\vspace{1in}
+
+\item An inconsistent system has more than one solution. \\
+
+\noindent \textbf{Answer: }
+False. "A system of linear equations is said to be consistent if it has either one solution or infinitely many solutions; a system is inconsistent if it has no solution.
+"(p.4)
+\vspace{1in}
+
+\item Two linear systems are equivalent if they have the same solution set. \\
+
+\noindent \textbf{Answer: }
+True. "Two linear systems are called equivalent if they have the same solution set. That is, each solution of the first system is a solution of the second system, and each solution of the second system is a solution of the first." p(3)
+\vspace{1in}
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+%%%fifth problem
+\noindent\textbf{Exercise 1.1.34: } Solve the system of equations from Exercise 33. [Hint: To speed up the calculations, interchange rows 1 and 4 before starting “replace” operations.]
+
+\begin{align}
+4t_{1}-t_{2}+(0)t_{3}-t_{4}&=30\\
+-t_{1}+4t_{2}-t_{3}+(0)t_{4}&=60\\
+(0)t_{1}-t_{2}+4t_{3}-t_{4}&=70\\
+-t_{1}+(0)t_{2}-t_{3}+4t_{4}&=40
+\end{align}\\
+\noindent\textbf{Note:} The temperature at each node is found by averaging the four nearest nodes. The system is then made by taking the average of each node.\\
+
+
+\noindent \textbf{Solution: }
+First we want to take our system and put it in augmented matrix form,
+
+
+
+\begin{equation}
+\begin{bmatrix} 
+4&-1&0&-1&30\\
+-1&4&-1&0&60\\
+0&-1&4&-1&70\\
+-1&0&-1&4&40
+\end{bmatrix}
+\end{equation}
+
+Then, to make the operations a little easier we want to interchange $r_1$ with $r_4$ and $r_2$ with $r_3$,
+
+\begin{equation}
+\begin{bmatrix} 
+-1&0&-1&4&40\\
+0&-1&4&-1&70\\
+-1&4&-1&0&60\\
+4&-1&0&-1&30\\
+\end{bmatrix}
+\end{equation}
+
+With a couple more row operations,
+\begin{equation}
+\begin{bmatrix} 
+-1&0&-1&4&40\\
+0&-1&4&-1&70\\
+0&4&0&-4&20\\
+4&-1&0&-1&30\\
+\end{bmatrix}, -r_1+r_3
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} 
+-1&0&-1&4&40\\
+0&-1&4&-1&70\\
+0&1&0&-1&5\\
+4&-1&0&-1&30\\
+\end{bmatrix}, \frac{1}{4}r_3
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} 
+-1&0&-1&4&40\\
+0&-1&4&-1&70\\
+0&1&0&-1&5\\
+-4&0&4&0&40\\
+\end{bmatrix}, r_2-r_4
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} 
+1&0&1&-4&-40\\
+0&1&-4&1&-70\\
+0&1&0&-1&5\\
+1&0&-1&0&-10\\
+\end{bmatrix}, -\frac{1}{4}r_4, -1r_1,-1r_2
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} 
+1&0&1&-4&-40\\
+0&1&-4&1&-70\\
+0&0&-4&2&-75\\
+1&0&-1&0&-10\\
+\end{bmatrix}, r_2-r_3,
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} 
+1&0&1&-4&-40\\
+0&1&-4&1&-70\\
+0&0&-4&2&-75\\
+0&0&2&-4&-30\\
+\end{bmatrix}, r_1-r_4,
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} 
+1&0&1&-4&-40\\
+0&1&-4&1&-70\\
+0&0&-4&2&-75\\
+0&0&0&-3&-67.5\\
+\end{bmatrix},  \frac{1}{2}r_3+r_4
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} 
+1&0&1&-4&-40\\
+0&1&-4&1&-70\\
+0&0&1&-.5&18.75\\
+0&0&0&1&22.5\\
+\end{bmatrix},  -\frac{1}{4}r_3,-\frac{1}{3} r_4
+\end{equation}
+Now we solve the system,
+\begin{align}
+T_4&=22.5\\
+T_3&=18.75 + 11.25\\
+T_2&=-70-22.5+4(T_3)\\
+T_1&=-40+90-(T_3)
+\end {align}
+Simplifying we get,
+\begin{align}
+T_4&=22.5\\
+T_3&=30\\
+T_2&=27.5\\
+T_1&=20
+\end {align}
+
+
+
+
+
+
+
+
+\vspace{1in}\\\\
+
+
+
+
+
+
+
+{\huge\textbf{Section 1.2:}}\\\\
+
+
+%%%first problem
+\noindent\textbf{Exercise 1.2.4: }Row reduce the matrices in Exercises 3 and 4 to reduced echelon form. Circle the pivot positions in the final matrix and in the original matrix, and list the pivot columns.\\
+\begin{equation}
+\begin{bmatrix} 
+1&3&5&7\\
+3&5&7&9\\
+5&6&9&1
+\end{bmatrix}
+\end{equation}
+\\
+\noindent \textbf{Solution: }
+The first step to row reduction here is to create a pivot column out of the left most non zero column. We want to use row replacement here by adding multiples of $r_1$.
+
+\begin{equation}
+\begin{bmatrix} 
+1&3&5&7\\
+0&-4&-8&-12\\
+5&6&9&1
+\end{bmatrix}, -3r_1+r_2
+\end{equation}
+
+
+\begin{equation}
+\begin{bmatrix} 
+1&3&5&7\\
+0&-4&-8&-12\\
+0&-8&-16&-34
+\end{bmatrix}, -5r_1+r_3
+\end{equation}
+Then we want to do the same thing and make a pivot in $c_2$.
+\begin{equation}
+\begin{bmatrix} 
+1&3&5&7\\
+0&-4&-8&-12\\
+0&0&0&-10
+\end{bmatrix}, -2r_2+r_3
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} 
+1&3&5&7\\
+0&1&2&3\\
+0&0&0&1
+\end{bmatrix},\frac{r_2}{-4} and \frac{r_3}{-10} 
+\end{equation}
+We have now reached an echelon form of the original matrix. In order to reach a reduced echelon form we must take the right most pivot, scale it to 1 and use row replacement to create zeroes on top of it. 
+\begin{equation}
+\begin{bmatrix} 
+1&3&5&0\\
+0&1&2&0\\
+0&0&0&1
+\end{bmatrix},-3r_3+r_2, and -7r_3+r_1 
+\end{equation}
+Then we have to do the same with the second right most pivot,
+\begin{equation}
+\begin{bmatrix} 
+(1)&0&-1&0\\
+0&(1)&2&0\\
+0&0&0&(1)
+\end{bmatrix},-3r_2+r_1 
+\end{equation}
+Now we have our reduced echelon form where the pivot columns are $c_1$,$c_2$, and $c_4$.
+
+\vspace{1in}
+
+
+%%%second problem
+\noindent\textbf{Exercise 1.2.12: }Find the general solutions of the systems whose augmented matrices are given in Exercises 7–14.\\
+\begin{equation}
+\begin{bmatrix} 
+1&-7&0&6&5\\
+0&0&1&-2&-3\\
+-1&7&-4&2&7
+\end{bmatrix}
+\end{equation}
+\\
+\noindent \textbf{Solution: }
+Lets first try and get the augmented matrix in echelon form.  Since we want to get the left most pivot we must add $r_1$ to $r_3$,
+\begin{equation}
+\begin{bmatrix} 
+1&-7&0&6&5\\
+0&0&1&-2&-3\\
+0&0&-4&2&12
+\end{bmatrix}, r_1 + r_3
+\end{equation}
+From here we can see that $r_3$ is a multiple of $r_2$ we can use row replacement to get an entire row of zeroes.
+\begin{equation}
+\begin{bmatrix} 
+1&-7&0&6&5\\
+0&0&1&-2&-3\\
+0&0&0&0&0
+\end{bmatrix}, 4r_2 + r_3
+\end{equation}
+Luckily for us, in the process of just getting an echelon form, we solved for the reduced echelon form. Since the reduced echelon form we can see that $x_1$ and $x_3$ are basic variables and that $x_2$ and $x_4$ are free variables. Solving the system,
+\begin{align}
+x_1&= 5-6x_4+7x_2\\
+x_3&= -3+2x_4
+\end{align}
+
+
+
+
+
+\vspace{1in}
+
+
+%%%third problem
+\noindent\textbf{Exercise 1.2.22: } In Exercises 21 and 22, mark each statement True or False. Justify each answer.\\ 
+
+\begin{enumerate}[(a)]
+\item The echelon form of a matrix is unique.\\
+
+\noindent \textbf{Answer: }
+False. The echelon form of a matrix is not unique, because you can scale any row and the new matrix is still considered the echelon form of the original. The reduced echelon form is unique to each matrix because by definition it is reduced or unscaled (leading entry is 1). Theorem I in text
+\vspace{1in}
+
+\item The pivot positions in a matrix depend on whether row interchanges are used in the row reduction process. \\
+
+\noindent \textbf{Answer: }
+False. The pivot position in a matrix $A$ is a location in $A$ that corresponds to a leading 1 in reduced echelon form. Because of theorem one we know that there is a unique echelon form for a given matrix we know that row interchange must not effect the pivot positions. 
+\vspace{1in}
+
+\item Reducing a matrix to echelon form is called the forward phase of the row reduction process. \\
+
+\noindent \textbf{Answer: }
+True. ""The combination of steps 1–4 is called the forward phase of the row reduction algorithm." (p.20) steps 1-4 refers to reducing a matrix to echelon from.
+\vspace{1in}
+
+\item Whenever a system has free variables, the solution set contains many solutions. \\
+
+\noindent \textbf{Answer: }
+False. Suppose a system that has at least one free variable and is also inconsistent. Regardless of the choice of free variables the system will always have no solution.
+\vspace{1in}
+
+
+\item A general solution of a system is an explicit description of all solutions of the system. \\
+
+\noindent \textbf{Answer: }
+True. I don't know what else to say. I guess there might be contention over if general solutions to systems with free variables are explicit enough, which I think they are since there are infinitely many solutions and at the very least the general solution is giving information about how the system operates. 
+\vspace{1in}
+
+
+
+
+\end{enumerate}
+
+
+
+
+%%%fourth problem
+\noindent\textbf{Exercise 1.2.24: }Suppose a system of linear equations has a 3X5 augmented matrix whose fifth column is a pivot column. Is the system consistent? Why (or why not)?\\\\
+\noindent \textbf{Solution: }
+The system is inconsistent if the last column is a pivot column. By the definition a pivot column is a column that corresponds to a leading 1 in reduced echelon form we now that the last row of the 3X5 augmented matrix will be,
+\begin{equation}
+\begin{bmatrix} 
+0&0&0&0&x
+\end{bmatrix}
+\end{equation}
+where $x$ can be any non zero integer. This produces a system with a contradiction and therefore no solution.
+
+
+
+\vspace{1in}\\\\
+
+
+
+
+
+{\huge\textbf{Section 1.3:}}\\\\
+
+
+%%%first problem
+\noindent\textbf{Exercise 1.3.10: }In Exercises 9 and 10, write a vector equation that is equivalent to the given system of equations.
+\begin{align}
+4x_{1}+x_{2}+3x_{3}&=9\\
+x_{1}-7x_{2}-2x_{3}&=2\\
+8x_{1}+6x_{2}-5x_{3}&=15
+\end{align}
+\\
+
+\noindent \textbf{Solution: }
+\begin{equation}
+\[x_1
+\begin{bmatrix} 
+4\\
+1\\
+8
+\end{bmatrix}
++x_2
+\begin{bmatrix} 
+3\\
+-7\\
+6
+\end{bmatrix}
++x_3
+\begin{bmatrix} 
+3\\
+-2\\
+5
+\end{bmatrix}
+ =
+ \begin{bmatrix} 
+9\\
+2\\
+5
+\end{bmatrix}
+\]
+ \end{equation}
+
+
+\vspace{1in}
+
+
+
+%%%second problem
+\noindent\textbf{Exercise 1.3.14: } In Exercises 13 and 14, determine if b is a linear combination of the vectors formed from the columns of the matrix A.
+\begin{align}
+A&=\begin{bmatrix} 
+1&-2&-6\\
+0&3&7\\
+1&-2&5
+\end{bmatrix}
+,  b=
+\begin{bmatrix} 
+11\\
+-5\\
+9
+\end{bmatrix}
+\end{align}
+
+
+\noindent \textbf{Solution: }
+If $b$ is a linear combination of matrix $A$ then we know that by the definition of linear combination there must be some $x_1$, $x_2$ and $x_3$ such that, 
+\begin{equation}
+\[x_1
+\begin{bmatrix} 
+1\\
+0\\
+1
+\end{bmatrix}
++x_2
+\begin{bmatrix} 
+-2\\
+3\\
+2
+\end{bmatrix}
++x_3
+\begin{bmatrix} 
+-6\\
+7\\
+5
+\end{bmatrix}
+ =
+ \begin{bmatrix} 
+11\\
+-5\\
+9
+\end{bmatrix}
+\]
+ \end{equation}
+So we must solve the augmented matrix,
+\begin{equation}
+\begin{bmatrix} 
+1&-2&-6&11\\
+0&3&7&-5\\
+1&-2&5&9
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{bmatrix} 
+1&-2&-4&3\\
+0&3&7&-7\\
+0&0&-11&2
+\end{bmatrix}
+\end{equation}
+From here we can tell that the system is consistent because the last column is not a pivot column. Thus $b$ must be a linear combination of $A$.
+
+
+
+
+
+\vspace{1in}
+
+
+
+
+
+%%%third problem
+\noindent\textbf{Exercise 1.3.20: }Give a geometric description of Span $\{v_{1},v_{2}\}$ for the vectors in Exercise 16.\\\\
+ \begin{align}
+v_1&=\begin{bmatrix} 
+3\\
+0\\
+2
+\end{bmatrix}
+,  v_2=
+\begin{bmatrix} 
+-2\\
+0\\
+3
+\end{bmatrix}
+\end{align}
+
+\noindent \textbf{Solution: }
+We now from the definition of Span that we are looking at the collection of all the vectors that can be written in the form of,
+\begin{equation}
+c_1\begin{bmatrix} 
+3\\
+0\\
+2
+\end{bmatrix}
++c_2
+\begin{bmatrix} 
+-2\\
+0\\
+3
+\end{bmatrix}
+\end{equation}
+such that $c_1$ and $c_2$ are scalers. This means that there are two possible geometric descriptions for Span $\{v_{1},v_{2}\}$ The first assumes that $v_{1}$ is a multiple of $v_{2}$. In this case Span $\{v_{1},v_{2}\}$ is a line in $\mathcal{R}^3$ that goes from the origin to $v_1$ or $v_2$ it doesn't matter which because if one is a multiple they both point the same way. The second assumes that $v_{1}$ is not a multiple of $v_{2}$. In the second case we know, because of vector addition that Span $\{v_{1},v_{2}\}$ represents a plane formed by $v_{1}$, $v_{2}$ and the origin.\\\\
+To find out which lets first assume that $v_{2}$ is a multiple of $v_{1}$. That means that the following expression is true,
+\begin{align}
+\begin{bmatrix} 
+3\\
+0\\
+2
+\end{bmatrix}
+&=k
+\begin{bmatrix} 
+-2\\
+0\\
+3
+\end{bmatrix}
+\end{align}
+Through some algebra we get,
+\begin{align}
+3&=-2k\\
+k&=\frac{3}{-2}
+\end{align}
+and,
+\begin{align}
+2&=3k\\
+k&=\frac{2}{3}
+\end{align}
+Here we have a contradiction, $k$ is equal to both $\frac{2}{3}$ and $\frac{3}{-2}$. Therefore $v_{2}$ is not a multiple of $v_{1}$. Thus Span $\{v_{1},v_{2}\}$ represents a plane formed by $v_{1}$, $v_{2}$ and the origin.
+
+
+
+\vspace{1in}
+
+
+
+%%%fourth problem
+\noindent\textbf{Exercise 1.3.24: }
+In Exercises 23 and 24, mark each statement True or False. Justify each answer.\\
+
+\begin{enumerate}[(a)]
+\item Any list of five real numbers is a vector in $\mathcal{R}^5$\\
+
+\noindent \textbf{Answer: }
+True.$\mathcal{R}^5$ is a set of every possible list of 5 real numbers. Pick a list of any five numbers and it will be an element in $\mathcal{R}^5$.
+\vspace{1in}
+
+\item The vector u results when a vector u-v is added to the vector v.\\
+
+\noindent \textbf{Answer: }
+True. Using simple head to tail vector addition we can see that this is true.
+\vspace{1in}
+
+\item The weights $c_{1}...c_{p}$ in a linear combination $c_{1}v_{1}+...+c_{p}v_{p}$ cannot all be zero. \\
+
+\noindent \textbf{Answer: }
+False. "The weights in a linear combination can be any real numbers, including zero."(p.28)
+
+\vspace{1in}
+
+\item When u and v are nonzero vectors, Span $\{u,v\}$ contains
+the line through u and the origin. \\
+
+\noindent \textbf{Answer: }
+True. The line that contains u and the origin is just a subset of Span $\{u,v\}$ where the weight on $v$ is zero.
+\vspace{1in}
+
+
+\item Asking whether the linear system corresponding to an augmented matrix, $\begin{bmatrix} a_{1}&a_{2}&a_{3}&b\\ \end{bmatrix}$ has a solution amounts to asking whether b is in Span $\{a_{1},a_{2},a_{3}\}$ .\\
+
+\noindent \textbf{Answer: }
+True. When we solve the augmented matrix we find the weight(s) that that make a subset of Span $\{a_{1},a_{2},a_{3}\}$. See first definition in p.30 .
+
+\vspace{1in}
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

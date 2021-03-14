@@ -1,0 +1,465 @@
+%%% Preamble starts here.
+\documentclass{amsart}
+%for the heading
+\usepackage{fancyhdr, enumerate}
+%for the picture. 
+\usepackage{tikz}
+%adjust the page width
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\linespread{1.1}
+
+%special commands for number sets
+\def\RR{{\mathbb R}}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\CC{{\mathbb C}}
+
+\makeatletter
+\newcommand{\vo}{\vec{o}\@ifnextchar{^}{\,}{}}
+\makeatother
+
+% header
+\lhead{\sc  Linear Algebra: Homework 5}
+\chead{\sc Stefano Fochesatto } 
+\rhead{\today}
+\cfoot{}
+\pagestyle{fancy}
+
+%%%% Main document starts here.
+
+\begin{document}
+\thispagestyle{fancy}
+
+
+
+
+
+{\huge\textbf{Section 2.3:}}\\\\
+
+
+%%%first problem
+\noindent\textbf{Exercise 2.3.8: } Determine if $A$ is invertible.
+\begin{align*}
+A &= 
+\begin{bmatrix}
+  1&3   &7  &4  \\
+  0&5   &9  &6  \\
+ 0 & 0  & 2  &8 \\
+  0  &0   & 0  &10 
+\end{bmatrix}
+\end{align*}
+
+\noindent \textbf{Solution: } Matrix $A$ is a 4x4 matrix with 4 pivot positions, therefore by the IMT we know that $A$ must be invertible.
+\vspace{1in}
+
+%%%second problem
+\noindent\textbf{Exercise 2.3.10: } 
+
+
+
+
+
+\noindent \textbf{Solution: }  Determine if $A$ is invertible.
+\begin{align*}
+A &= 
+\begin{bmatrix}
+  5&3   &1  &7  &9\\
+  6&4   &2  &8  &-8 \\
+ 7 & 5  &3  &10  &9 \\
+  9  &6   & 4  &-9 &5 \\
+  8&5&2&11&4   
+\end{bmatrix}
+\end{align*}
+The fastest way to prove that $A$ is an invertible matrix with the given information is to get it into row echelon form and count the number of pivots. Row reducing $A$ we get, 
+
+\begin{equation*}
+:\quad \begin{bmatrix}9&6&4&-9&5\\ 0&\frac{1}{3}&-\frac{1}{9}&17&\frac{46}{9}\\ 0&0&-\frac{5}{3}&36&\frac{14}{3}\\ 0&0&0&-\frac{2}{5}&-\frac{66}{5}\\ 0&0&0&0&1\end{bmatrix}}
+\end{equation*}
+
+Since there is $A$ is a 5x5 matrix with 5 pivot positions, by the IMT it must be invertible. 
+
+\vspace{1in}
+
+
+%%%third problem
+\noindent\textbf{Exercise 2.3.12: } 
+
+
+\begin{enumerate}
+\item If there is an nxn matrix $D$ such that $AD = I$. then there is also an n x n matrix $C$ such that such that $CA = I$\\
+\noindent \textbf{Answer: } True. Consider axiom $k$ of the IMT.
+\vspace{1in}
+
+
+
+
+\item If the columns of $A$ are linearly independent, then the columns of $A$ span $\RR^{N}$.(It is previously stated that $A$ is an nxn matrix.)\\
+\noindent \textbf{Answer: } True. If axiom $e$ of the IMT then we know that $h$ must also be true.
+\vspace{1in}
+
+
+\item If the equation $Ax = b$ has at least one solution for each $b. \in \RR^{n}$, then the solution is unique for each $b$.\\
+\noindent \textbf{Answer: } True. If If the equation $Ax = b$ has at least one solution for each $b. \in \RR^{n}$ the using axiom $g$ from the IMT we know that $A$ must be invertible. Theorem 5 from chapter 2.2 states that if $A$ is an invertible nxn matrix then the equation $Ax = b$ has a unique solution.
+\vspace{1in}
+
+
+\item If the linear transformation $x \to Ax$ maps $\RR^{n}$ into $\RR^{n}$, then $A$ has $n$ pivots.\\  
+\noindent \textbf{Answer: }True. We know that in order for a matrix transformation to be onto, the associated matrix must have a pivot in every row. Since our associated matrix $A$ is defined as being an nxn matrix it must also be true it has a pivot in every column, hence the bijection,  $\RR^{n}$ into $\RR^{n}$.
+\vspace{1in}
+
+
+\item If there is a $b$ in  $\RR^{n}$ such that the equation $Ax = b$ is inconsistent, the the transformation $x \to Ax$ is not one-to-one.\\
+\noindent \textbf{Answer: } True. The only way to have the equation $Ax = b$ be inconsistent is if the associated matrix $A$ has a row composed of zeroes when in echelon form. Since we know that $A$ is defined as being nxn we also know that it must also have a free variable, therefore a non pivot column thus $x \to Ax$ is not one-to-one.
+\vspace{1in}
+\end{enumerate}
+
+
+
+%%%fourth problem
+\noindent\textbf{Exercise 2.3.14: } An mxn lower triangular matrix is one whose entries above the main diagonal are 0's. When is a square lower triangular matrix invertible? Justify your answer.\\
+\noindent \textbf{Solution: } If a lower triangular matrix with all zeroes above the main diagonal then, we know that there exists an inverse. When we take the transpose of $A$ we get a matrix where the diagonal corresponds to pivot positions and since it has a pivot in every row by IMT it is invertible. We also know from Theorem 6 in Chapter 2.2 that $(A^{T})^{-1} = (A^{-1})^{T}$. So A must be invertible.
+\vspace{1in}
+
+
+
+
+
+
+
+{\huge\textbf{Section 3.1:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 3.1.14: } Compute the determinant by cofactor expansion. in each step choose the row that requires the least computation.
+
+\begin{align*}
+A &= 
+\begin{bmatrix}
+  6&3   &2  &4  &0\\
+  9&0   &-4  &1  &0 \\
+ 8 & -5  &6  &7  &1 \\
+  2  &0   &0  &0 &0 \\
+  4&2&3&2&0   
+\end{bmatrix}
+\end{align*}
+\noindent \textbf{Solution: } First let's begin by expanding along the fourth row.
+
+\begin{equation*}
+det(A) = 
+\begin{vmatrix}
+  6&3   &2  &4  &0\\
+  9&0   &-4  &1  &0 \\
+ 8 & -5  &6  &7  &1 \\
+  2  &0   &0  &0 &0 \\
+  4&2&3&2&0   
+\end{vmatrix}
+ = 
+ -2*
+ \begin{vmatrix}
+  3   &2  &4  &0\\
+0   &-4  &1  &0 \\
+ -5  &6  &7  &1 \\
+2&3&2&0   
+\end{vmatrix}
+\end{equation*}
+The we want to expand by the last column because it has the most zeroes.
+\begin{equation*}
+det(A)
+ = 
+ -2*
+ \begin{vmatrix}
+  3   &2  &4  &0\\
+0   &-4  &1  &0 \\
+ -5  &6  &7  &1 \\
+2&3&2&0   
+\end{vmatrix}
+ = 
+ -2*-1
+  \begin{vmatrix}
+  3   &2  &4  \\
+0   &-4  &1   \\
+2&3&2   
+\end{vmatrix}
+\end{equation*}
+Then we want to expand by the first column,
+\begin{equation*}
+det(A) = 
+ 2*
+  \begin{vmatrix}
+  3   &2  &4  \\
+0   &-4  &1   \\
+2&3&2   
+\end{vmatrix}
+ = 
+ 2*
+ (3 * 
+   \begin{vmatrix}
+-4  &1 \\
+3&2   
+\end{vmatrix}
++
+2* 
+ \begin{vmatrix}
+ 2  &4  \\
+  -4  &1    
+\end{vmatrix}
+)
+\end{equation*}
+Then we can easily calculate the determinants of the resulting 2x2 matrices .
+\begin{equation*}
+det(A) = 2(3(-8-3)+2(2+16)) = 6 
+\end{equation*}
+\vspace{1in}
+
+%%%second problem
+\noindent\textbf{Exercise 3.1.22: } State the row operation and then describe how it affects the determinant. 
+\begin{align*}
+  \begin{bmatrix}
+  3   &2   \\
+5  &4    
+\end{bmatrix} &, 
+ \begin{bmatrix}
+  3   &2   \\
+5+3k  &4+2k    
+\end{bmatrix}
+\end{align*}
+\noindent \textbf{Solution: } The row operation is row replacement, because we are replacing a row with another. We can do some quick algebra to compare the determinants. 
+
+\begin{align*}
+3*4 - 5*2 &= 12 - 10\\
+&=2
+\end{align*}
+Then with the other matrix,
+\begin{align*}
+ 3*(4+2k) - 2*(5+3k)&= 12+6k - 10-6k\\
+&=2
+\end{align*}
+Since both determinants are the same, we can conclude that in this case the row operation had no affect on the determinant.
+\vspace{1in}
+
+%%%third problem
+\noindent\textbf{Exercise 3.1.40: } 
+\begin{enumerate}
+
+\item The cofactor expansion of the det(A) down a column is equal to the cofactor expansion along a row.\\
+\noindent \textbf{Answer: } True. Consider Theorem 1 of Chapter 3 that states the determinant of an nxn matrix A can be computed by cofactor expansion along any row or down any column.\\
+\vspace{1in}
+
+
+\item The determinant of a triangular matrix is the is, of the entries along the diagonal.\\
+\noindent \textbf{Answer: } False. The determinant of a triangular matrix is the product of the entries along the main diagonal. By Theorem 2 Chapter 3.
+\vspace{1in} 
+\end{enumerate}
+
+
+{\huge\textbf{Section 3.2:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 3.2.28: } 
+\begin{enumerate}
+
+
+\item If three row interchanges are made in succession then the new determinant equals the old determinant.\\
+\noindent \textbf{Answer: } False. After the first row interchange the new determinant will be -det(A), the second  det(A) and finally the third, -det(A). So after three row interchanges the new determinant will be -1 times the old determinant.
+\vspace{1in} 
+
+
+
+
+\item The determinant of $A$ is the product of the diagonal entries of $A$\\
+\noindent \textbf{Answer: } False. In order for this to be true $A$ must be in row echelon form ie. reduced to triangular form. Consider the matrix $A = \begin{bmatrix} 1 & 2\\ 2&1 \end{bmatrix}$ here $det(A) = -3$ and the product along the diagonal is $1$ since $1 = -3$ the statement is false.  
+\vspace{1in} 
+
+
+
+
+
+\item  If the $det(A) = 0$, then two rows or two columns are the same, or a row or column is zero.\\
+\noindent \textbf{Answer: } False. Consider the matrix $A = \begin{bmatrix} 1 & 3\\ 3& 9 \end{bmatrix}$. Here we can see that $det(A) = 0$ even though there are no two rows or columns that are the same, and there is no zero column or row. 
+\vspace{1in} 
+
+
+
+\item $det A^{-1}  = (-1) det A.$\\
+\noindent \textbf{Answer: } False. The $det A^{-1}  = 1/det A$. By Theorem 6 of Chapter 3 consider the equation $A^{-1}*A = I$, when we take the determinants of both sides of the equation. which we can by Theorem 6, we get $det(A^{-1})*det(A) = 1$. So therefore it must be true that the $det A^{-1}  = 1/det A$.
+
+
+ \vspace{1in} 
+
+
+
+
+
+\end{enumerate}
+
+%%%second problem
+\noindent\textbf{Exercise 3.2.34: } Let $A$ and $P$ be square matrices, with $P$ invertible. Show that $det(PAP^{-1}) = det(A)$\\
+\noindent \textbf{Solution: } Consider $det(PAP^{-1})$ then by Theorem 6 Chapter 3 we can say that
+ \begin{equation*}
+ det(PAP^{-1}) = det(P)*det(A)*det(P^{-1}).
+\end{equation*}
+ 
+  Since determinants are just real numbers we can reorder them, 
+   \begin{equation*}
+  det(PAP^{-1}) = det(P)*det(P^{-1})*det(A).
+\end{equation*}
+ From the last problem we proved that for any invertible matrix $A$ then the $det A^{-1}  = 1/det A$, so we can say the same for $det P^{-1}$,
+    \begin{equation*}
+   det(PAP^{-1}) = det(P)*\frac{1}{det(P)}*det(A). 
+\end{equation*}
+
+   Thus $det(PAP^{-1}) = det(A)$.
+\vspace{1in}
+
+%%%third problem
+\noindent\textbf{Exercise 3.2.36: } Find a formula for $det(rA)$ when $A$ is an nxn matrix\\
+\noindent \textbf{Solution: } Suppose $A$ is an nxn matrix. Since we know that $A = I*A$ where $I$ is the nxn identity matrix, then it must follow that.
+\begin{equation*}
+det(A) = det(IA)
+\end{equation*}
+Furthermore we can surmise, by substitution that,
+\begin{equation*}
+det(rA) = det(rIA)
+\end{equation*}
+Where $r$ is a scalar constant. Using Theorem 6 from Chapter 3 it is also true that,
+\begin{equation*}
+det(rA) = det(rI)*det(A)
+\end{equation*}
+by Theorem 2 of Chapter 3  we also know that $det(rI) = r^n$. Thus by substitution,
+\begin{equation*}
+det(rA) = r^n*det(A)
+\end{equation*}
+\vspace{1in}
+
+
+
+
+
+
+{\huge\textbf{Section 3.3:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 3.3.18: } Suppose that all the entries in $A$ are integers and the $det (A) = 1$. Explain why all the entries in $A^{-1}$ are integers. \\
+\noindent \textbf{Solution: } We know from Theorem 8 in Chapter 3 that $A^{-1}$ can be calculated by,
+\begin{equation*}
+A^{-1} = \frac{1}{det(A)}*adj(A)
+\end{equation*}
+given that $A$ is an invertible nxn matrix. From here we can see that all me need to do to prove that all the entries in $A^{-1}$ are integers is to show that all the entries in $adj(A)$ are also integers. Recall from the textbook that the formula for each term in the $adj(A)$ matrix is given by,
+\begin{equation*}
+(-1)^{(i+j)}*det(A_{ji}) = adj(A)_{ji}
+\end{equation*}
+Where $A_{ji}$ denotes the submatrix of A formed by deleting row $j$ and column $i$ and $adj(A)_{ji}$ refers to the term in the $j^{th}$ row and $i^{th}$ column of $adj(A)$. Since $A$ is composed of all integers it must follow that $det(A_{ji})$ is also an integer. Therefore each term in $adj(A)$ must be an integer. Thus we have shown that all the entries in $A^{-1}$ are integers.
+
+\vspace{1in}
+
+%%%second problem
+\noindent\textbf{Exercise 3.3.30: } Let $R$ be a triangle whose vertices are $(x_1,y_1)$, $(x_2,y_2)$, and $(x_3,y_3)$. Show that
+\begin{equation*}
+{area of triangle} = \frac{1}{2}*det
+\begin{bmatrix}
+x_1&y_1&1\\
+x_2&y_2&1\\
+x_3&y_3&1
+\end{bmatrix}
+\end{equation*}
+ 
+\noindent \textbf{Solution: } First we want to translate the triangle to the origin to get a clear picture of the actual length of each side. To do so we subtract  $(x_1,y_1)$ from each vertex. so our new triangle is located on $(0,0)$, $(x_2 - x_1,y_2 - y_1)$, and $(x_3 - x_1,y_3 - y_1)$. We can also find the area of this triangle by taking the area of the parallelogram formed by the two vectors $a_1 = [x_2 - x_1, y_2 - y_1]$ and $a_2 = [x_3 - x_1, y_3 - y_1]$ and then dividing it by two, so
+\begin{equation*}
+{area of triangle} =  \frac{1}{2}*det
+\begin{bmatrix}
+x_2 - x_1&x_3 - x_1\\
+y_2 - y_1&y_3 - y_1
+\end{bmatrix}
+\end{equation*}
+Doing some row operations and cofactor expansion to the given matrix,
+\begin{align*}
+{
+\begin{vmatrix}
+x_1&y_1&1\\
+x_2&y_2&1\\
+x_3&y_3&1
+\end{vmatrix}}
+&= 
+{
+\begin{vmatrix}
+x_1&y_1&1\\
+x_2 - x_1&y_2 - y_1&0\\
+x_3 - x_1&y_3 - y_1&0
+\end{vmatrix} , \text{subtracting $R_1$ from $R_2$ and $R_3$}}\\
+&=1*
+\begin{vmatrix}
+x_2 - x_1&y_2 - y_1\\
+x_3 - x_1&y_3 - y_1
+\end{vmatrix}  \text{cofactor expansion along third column}\\
+& =
+\begin{vmatrix}
+x_2 - x_1&x_3 - x_1\\
+y_2 - y_1&y_3 - y_1
+\end{vmatrix}\text{ equivalent by Theorem 5 Chapter 3}
+\end{align*}
+Therefore by substitution,
+\begin{equation*}
+{area of triangle} = \frac{1}{2}*det
+\begin{bmatrix}
+x_1&y_1&1\\
+x_2&y_2&1\\
+x_3&y_3&1
+\end{bmatrix}
+\end{equation*}
+ 
+\vspace{1in}
+
+%%%third problem
+\noindent\textbf{Exercise 3.3.32: }  Let $S$ be the tetrahedron in $\RR^{3}$ with the vertex at the vectors $0$, $e_1$, $e_2$, and $e_3$, and let $S'$ be the tetrahedron with vertices at vectors  $0$, $v_1$, $v_2$, and $v_3$.
+
+\begin{enumerate}
+
+
+\item Describe a linear transformation that maps $S$ onto $S'$.\\
+\noindent \textbf{Answer: } The linear transformation that maps $S$ onto $S'$, maps $T(I) = [v_1 v_2 v_3]$ where $I$ is the 3x3 identity matrix. Thus $T: Ax \to x$ such that $A = [v_1 v_2 v_3] $
+\vspace{1in}
+
+
+\itemFind the formula for the volume fo the tetrahedron $S'$ using the fact that,
+\begin{equation*}
+volume of S = \frac{1}{3} *area of base*height
+\end{equation*}
+
+\noindent \textbf{Answer: } First calculate the volume of $S$,
+ \begin{equation*}
+volume of S = \frac{1}{3} *\frac{1}{2}(1)*(1) = \frac{1}{6}
+\end{equation*}
+Thus since $T(S) = S'$ as defined by the previous problem we know that the volume of $S'$,
+\begin{equation*}
+volume of S' = \frac{1}{6} |{det(A)}|
+\end{equation*}
+
+\vspace{1in}
+
+
+\end{enumerate}
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

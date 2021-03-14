@@ -1,0 +1,363 @@
+%%% Preamble starts here.
+\documentclass{amsart}
+%for the heading
+\usepackage{fancyhdr, enumerate}
+%for the picture. 
+\usepackage{tikz}
+%adjust the page width
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\linespread{1.1}
+
+%special commands for number sets
+\def\RR{{\mathbb R}}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\CC{{\mathbb C}}
+
+\makeatletter
+\newcommand{\vo}{\vec{o}\@ifnextchar{^}{\,}{}}
+\makeatother
+
+% header
+\lhead{\sc  Linear Algebra: Homework 4}
+\chead{\sc Stefano Fochesatto } 
+\rhead{\today}
+\cfoot{}
+\pagestyle{fancy}
+
+%%%% Main document starts here.
+
+\begin{document}
+\thispagestyle{fancy}
+
+
+
+
+
+{\huge\textbf{Section 1.9:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 1.9.20: } In Exercises 17–20, show that $T$ is a linear transformation by finding a matrix that implements the mapping. Note that $x_1,x_2,...x_n$ are not vectors but are entries in vectors. $T(x_1,x_2,x_3,x_4) = 2x_1+ 3x_3 - 4x_4$ such that $T:\RR^{4} \to \RR$.\\\\
+\noindent \textbf{Solution: } First we must note that matrix transformation that facilitates the $T:\RR^{4} \to \RR$ must be a $1x4$ matrix. In order to find the elements in the matrix transformation we can simply look to the coefficients on each $x$ term. Consider,
+\begin{equation}
+\begin{bmatrix}
+2&0&3&-4
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4
+\end{bmatrix}=
+\begin{bmatrix}
+2x_1\\
+0\\
+3x_3\\
+-4x_4
+\end{bmatrix}
+\end{equation}
+\vspace{1in}
+
+%%%second problem
+\noindent\textbf{Exercise 1.9.24: } In Exercises 23 and 24, mark each statement True or False. Justify each answer.\\\\
+\begin{enumerate}
+
+
+\item Not every linear transformation from $\RR^{n}$ to $\RR^{m}$ is a matrix transformation.\\ 
+\textbf{Answer: } False. For every linear transformation we can build a unique matrix $A$ where $T(x) = Ax$ such that $A = [T(e_1)...T(e_n)]$.
+\vspace{1in}
+
+
+\item The columns of a standard matrix for a linear transformation from $\RR^{n}$ to $\RR^{m}$ are the images of the columns of the $n$ x $n$ identity matrix.\\
+\textbf{Answer: }True. As previously stated for every linear transformation we can build a unique matrix $A$ where $T(x) = Ax$ such that $A = [T(e_1)...T(e_n)]$. 
+\vspace{1in}
+
+
+\item The standard matrix of linear transformation from $\RR^{2}$ to $\RR^{2}$ that reflects points through the horizontal axis, the vertical axis, or the origin has the form,
+\begin{equation}
+\begin{bmatrix}
+a&0\\
+0&d
+\end{bmatrix}
+\end{equation}
+where $a$ and $d$ are +-1.
+
+\textbf{Answer: } True. Seen in Table 1 p.74. Reflection through the $x-axis$
+\begin{equation}
+\begin{bmatrix}
+1&0\\
+0&-1
+\end{bmatrix}
+\end{equation}
+Reflection through the $y-axis$,
+\begin{equation}
+\begin{bmatrix}
+-1&0\\
+0&1
+\end{bmatrix}
+\end{equation}
+Reflection about the origin
+\begin{equation}
+\begin{bmatrix}
+-1&0\\
+0&-1
+\end{bmatrix}
+\end{equation}
+\vspace{1in}
+
+
+\item A mapping $T: \RR^{n} \to \RR^{m}$ is a one-to-one if each vector $\RR^{n}$ maps onto a unique vector in $\RR^{m}$ \\
+\textbf{Answer: }False. For $T: \RR^{n} \to \RR^{m}$ to be one-to-one each vector in $\RR^{n}$ has to map onto a distinct vector in $\RR^{m}$. The statement above  "if each vector $\RR^{n}$ maps onto a unique vector in $\RR^{m}$" just describes a function not a one-to-one function. 
+\vspace{1in}
+
+
+
+\item If $A$ is a 3 x 2 matrix, then the transformation $x \to Ax$ cannot map $\RR^{2}$ to $\RR^{3}$\\
+\textbf{Answer: } True. For the transformation $x \to Ax$ to map $\RR^{2}$ to $\RR^{3}$ then $A$ must be a 2 x 3 matrix. 
+\vspace{1in}
+\end{enumerate}
+
+
+
+
+%%%third problem
+\noindent\textbf{Exercise 1.9.32: } Let $T: \RR^{n} \to \RR^{m}$ be a linear transformation. with $A$ its standard matrix. Complete the following statement to make it true; "T maps $\RR^{n}$ to $\RR^{m}$ if and only if $A$ has BLANK pivot columns." Find some theorems that explain why the statement is true.\\\\
+ \textbf{Solution: } The statement is only true when $A$ has a pivot in every row. By Theorem 12, "$T$ maps $\RR^{n}$ onto $\RR^{m}$ if and only if the columns of $A$ span $\RR^{m}$". For $A$, an m x n matrix to span $\RR^{m}$ there must be a pivot in every row (Theorem 4).
+\vspace{1in}
+
+
+
+
+
+{\huge\textbf{Section 2.1:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 2.1.10: } Let,
+\begin{equation}
+A=
+\begin{bmatrix}
+2&-3\\
+-4&6
+\end{bmatrix},
+B=
+\begin{bmatrix}
+8&4\\
+5&5
+\end{bmatrix},
+C=
+\begin{bmatrix}
+5&-2\\
+3&1
+\end{bmatrix}
+\end{equation}
+Verify that $AB=AC$ and yet $B \neq C$.\\\\
+\noindent \textbf{Solution: } First lets calculate $AB$,
+
+\begin{align}
+AB
+=&
+\begin{bmatrix}
+2&-3\\
+-4&6
+\end{bmatrix}
+*
+\begin{bmatrix}
+8&4\\
+5&5
+\end{bmatrix}\\ 
+&=
+\begin{bmatrix}
+2(8)-3(5)&2(4)-3(5)\\
+-4(8)+6(5)&-4(4)+6(5)
+\end{bmatrix}\\ 
+&=
+\begin{bmatrix}
+1&-7\\
+-2&14
+\end{bmatrix}
+\end{align}
+
+Then lets calculate $AC$,
+\begin{align}
+AC
+=&
+\begin{bmatrix}
+2&-3\\
+-4&6
+\end{bmatrix}
+*
+\begin{bmatrix}
+5&-2\\
+3&1
+\end{bmatrix}\\ 
+&=
+\begin{bmatrix}
+2(5)-3(3)&2(-2)-3(1)\\
+-4(5)+6(3)&-4(-2)+6(1)
+\end{bmatrix}\\ 
+&=
+\begin{bmatrix}
+1&-7\\
+-2&14
+\end{bmatrix}
+\end{align}
+Thus $AB=AC$ and $B \neq C$
+\vspace{1in}
+
+
+
+%%%second problem
+\noindent\textbf{Exercise 2.1.16: } Exercises 15 and 16 concern arbitrary matrices $A$, $B$, and $C$ for which the indicated sums and products are defined. Mark each statement True or False. Justify each answer.\\\\
+\begin{enumerate}
+
+\item If $A$ and $B$ are 3x3  and $B = [b_1,b_2,b_3]$, then $AB = [Ab_1+Ab_2+Ab_3]$\\
+\textbf{Answer: }False. When calculating the product of matrixes we don't sum the columns, the appropriate calculation is $AB = [Ab_1, Ab_2 ,Ab_3]$.
+\vspace{1in}
+
+
+
+\item The second row of $AB$ is the second row of $A$ multiplied on the right by $B.$\\
+\textbf{Answer: }True. The second row of $AB$ is calculated by,
+\begin{equation}
+AB_2 =
+\begin{bmatrix}
+a_{21}&a_{22}&a_{23}\\
+\end{bmatrix}
+\begin{bmatrix}
+b_{11}&b_{12}&b_{13}\\
+b_{21}&b_{22}&b_{23}\\
+b_{31}&b_{32}&b_{33}
+\end{bmatrix}
+\end{equation}
+\vspace{1in}
+
+
+
+\item $(AB)C=(AC)B$\\
+\textbf{Answer: } False. Matrix multiplication is not communicative, the statement would be correct if it was $(AB)C=A(BC)$ showcasing the associative law of multiplication.
+\vspace{1in}
+
+
+
+
+\item$(AB)^{T}=A^{T}B^{T}$\\
+\textbf{Answer: } False. Theorem 3 states that $(AB)^{T}=B^{T}A^{T}$.
+\vspace{1in}
+
+
+
+
+\item The transpose of a sum of matrices equals the sum of their transposes.\\
+\textbf{Answer: }True. By Theorem 3 which states that  $(A+B)^{T}=A^{T}+B^{T}$
+\vspace{1in}
+
+
+
+
+
+\end{enumerate}
+
+
+
+%%third problem
+\noindent\textbf{Exercise 2.1.18: } Suppose the first two columns, $b_1$ and $b_2$, of $B$ are equal. what can you say about the columns of $AB$ (if $AB$ is defined)? Why?\\
+\noindent \textbf{Solution: } Let $B =[b_1,b_2,b_3]$ such that $b_1=b_2$. Consider $AB = A[b_1,b_2,b_3]$, by substitution $AB = A[b_1,b_1,b_3]$. Through distribution $AB = [Ab_1,Ab_1,Ab_3]$, therefore we can say that that if there exists two columns in $B$ that are identical there must be two columns in $AB$ that are identical. 
+\vspace{1in}
+
+%%fourth problem
+\noindent\textbf{Exercise 2.1.22: } Show that if the columns of $B$ are linearly dependent, then so are the columns of $AB$.\\
+\noindent \textbf{Solution: } If the columns in $B$ are linearly dependent, then there exists a non-zero vector $x$ such that $Bx=0$ by the dependence relation. Thus $A(Bx)=A0$ and $(AB)x=0$. Therefore the columns of $AB$are linearly dependent.
+\vspace{1in}
+
+
+
+
+
+{\huge\textbf{Section 2.2:}}\\\\
+
+%%%first problem
+\noindent\textbf{Exercise 2.2.8: } Use matrix algebra to show that if $A$ is invertible and $D$ satisfies $AD  = I$, then $D = A^{-1}$.\\
+\noindent \textbf{Solution: }Suppose $AD=I$ multiplying both sides from $A^{-1}$,
+\begin{align}
+A^{-1}(AD)&=(I)A^{-1}\\
+(A^{-1}A)D&=A^{-1}\\
+(I)D&=A^{-1}\\
+D&=A^{-1}
+\end{align}
+Thus $D=A^{-1}$.
+\vspace{1in}
+
+%%%second problem
+\noindent\textbf{Exercise 2.2.10: }  \\
+\begin{enumeration}
+\item A product of invertible nxn matrices is invertible, and the inverse of the product is the product of the inverses in the same order.\\
+\textbf{Answer: } False. A product of invertible nxn matrices is invertible but the inverse of the product is the product of the inverses in reverse order. Theorem 6.  
+\vspace{1in}
+
+
+\item If $A$ is invertible, then the inverse of $A^{-1}$ is $A$ itself.\\
+\textbf{Answer: }True. Theorem 6.
+\vspace{1in}
+
+\item If $A = \begin{bmatrix}a&b\\ c&d \end{bmatrix}$ and $ad = bc$, then $A$ is not invertible.\\
+\textbf{Answer: } True. Theorem 4.
+\vspace{1in}
+
+\item If $A$can be row reduced to the identity matrix, then $A$ must be invertible.\\
+\textbf{Answer: }True. Theorem 7.
+\vspace{1in}
+
+
+\item If $A$ is invertible, then elementary row operations that reduce $A$ to the identity $I_{n}$ also reduce $A^{-1}$ to $I_{n}$.\\
+\textbf{Answer: } False. The elementary row operations that reduce $A$ to the identity $I_{n}$, reduce $I_{n}$ to $A^{-1}$.
+\vspace{1in}
+
+\end{enumeration}
+
+%%third problem
+\noindent\textbf{Exercise 2.2.12: } Let $A$ be an invertible nxn matrix, and let $B$ be an nxp matrix. Explain why $A^{-1}B$ can be computed by row reduction:
+\begin{equation}
+if [A B]~...~[I X], \text{then} X = A^{-1}B
+\end{equation}
+If $A$ is larger than 2 x 2, then row reduction of [A B] is much faster than computing both $A^{-1}$ and $A^{-1}B$. \\
+\noindent \textbf{Solution: } By reducing [A B] to [I X] we can say that $AX = B$. We can solve for $X$ by multiplying both sides by $A^{-1}$ we get $X=A^{-1}B$.   
+\vspace{1in}
+
+%%fourth problem
+\noindent\textbf{Exercise 2.2.14: } Suppose $(B-C)D = 0$, where $B$ and $C$ are both m x n matrices and $D$ is invertible. Show that $B = C$.\\
+\noindent \textbf{Solution: } Since $D$ is invertible, we can multiply both sides of $(B-C)D = 0$ by $D^{-1}$. 
+\begin{align}
+(B-C)D &= 0\\
+D^{-1}(B-C)D &= 0D^{-1}\\
+(B-C)I &= 0\\
+(B-C) &= 0\\
+B &= C
+\end{align}
+Thus $B = C$.
+\vspace{1in}
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

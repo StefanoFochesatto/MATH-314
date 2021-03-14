@@ -1,0 +1,307 @@
+%%% Preamble starts here.
+\documentclass{amsart}
+%for the heading
+\usepackage{fancyhdr, enumerate}
+%for the picture. 
+\usepackage{tikz}
+%adjust the page width
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\linespread{1.1}
+
+%special commands for number sets
+\def\RR{{\mathbb R}}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\CC{{\mathbb C}}
+\def\PP{{\mathbb P}}
+
+\makeatletter
+\newcommand{\vo}{\vec{o}\@ifnextchar{^}{\,}{}}
+\makeatother
+
+% header
+\lhead{\sc  Linear Algebra: Lab 4.7}
+\chead{\sc Stefano Fochesatto } 
+\rhead{\today}
+\cfoot{}
+\pagestyle{fancy}
+
+%%%% Main document starts here.
+
+\begin{document}
+\thispagestyle{fancy}
+
+
+
+
+
+{\huge\textbf{Lab 4.7}}\\\\
+%%%first problem
+
+\noindent\textbf{Exercise 1: }Let $B = \{b_1,b_2\}$ and $C = \{c_1,c_2\}$ be bases for $\RR^2$. find the change of coordinates matrix from $B \to C$ and from $C \to B$
+\begin{equation*}
+b_1 =
+\begin{bmatrix}
+1\\
+4
+\end{bmatrix},
+b_2 =
+\begin{bmatrix}
+-2\\
+3
+\end{bmatrix},
+c_1 =
+\begin{bmatrix}
+-2\\
+3
+\end{bmatrix},
+c_2 =
+\begin{bmatrix}
+4\\
+4
+\end{bmatrix},
+\end{equation*}
+
+\begin{enumerate}
+\item Set up the matrix $M$ whose columns are $[c_1,c_2,b_1.b_2]$\\
+\noindent \textbf{Answer: } Consider the following matrix,
+\begin{equation*}
+M =
+\begin{bmatrix}
+-2&4&1&-2\\
+3&4&4&3
+\end{bmatrix},
+\end{equation*}
+\vspace{.1in}
+
+\item Row reduce matrix $M$.\\
+\noindent \textbf{Answer: } Row reducing matrix M,
+\begin{align*}
+\begin{bmatrix}
+-2&4&1&-2\\
+3&4&4&3
+\end{bmatrix}
+&\approx
+\begin{bmatrix}
+3&4&4&3\\
+0&\frac{20}{3}&\frac{11}{3}&0
+\end{bmatrix} \text{ Row swap and row replacement at the same time.}\\
+&\approx
+\begin{bmatrix}
+3&4&4&3\\
+0&1&\frac{11}{20}&0
+\end{bmatrix}\\
+&\approx
+\begin{bmatrix}3&0&\frac{9}{5}&3\\ 0&1&\frac{11}{20}&0\end{bmatrix}\\
+&\approx
+\begin{bmatrix}1&0&\frac{3}{5}&1\\ 0&1&\frac{11}{20}&0\end{bmatrix}
+\end{align*}
+\vspace{.1in}
+
+
+\item Calculate ${P_c}^{-1}$, where  ${P_c} = [c_1,c_2]$.\\
+\noindent \textbf{Answer: }Consider,
+\begin{equation*}
+{P_c} = 
+\begin{bmatrix}
+-2&4\\
+3&4
+\end{bmatrix}
+\end{equation*}
+We know that probably the fastest way to calculate the inverse of a 2x2 matrix is to just multiply the whole thing by the reciprocal of the determinant. So,
+\begin{align*}
+{P_c}^{-1} &= \frac{1}{-20}
+\begin{bmatrix}
+-2&4\\
+3&4
+\end{bmatrix}\\
+&= \begin{bmatrix}-\frac{1}{5}&\frac{1}{5}\\ \frac{3}{20}&\frac{1}{10}\end{bmatrix}
+\end{align*}
+
+\vspace{.1in}
+
+\item Calculate $N = {P_c}^{-1}P_b$.\\
+\noindent \textbf{Answer: } Note that $P_b = [b_1,b_2]$ now through some matrix algebra we see that,
+\begin{align*}
+N &= \begin{bmatrix}-\frac{1}{5}&\frac{1}{5}\\ \frac{3}{20}&\frac{1}{10}\end{bmatrix}
+*\begin{bmatrix}
+1&-2\\
+4&3
+\end{bmatrix}\\
+&=
+\begin{bmatrix}\left(-\frac{1}{5}\right)\cdot \:1+\frac{1}{5}\cdot \:4&\left(-\frac{1}{5}\right)\left(-2\right)+\frac{1}{5}\cdot \:3\\ \frac{3}{20}\cdot \:1+\frac{1}{10}\cdot \:4&\frac{3}{20}\left(-2\right)+\frac{1}{10}\cdot \:3\end{bmatrix}\\
+&=
+\begin{bmatrix}\frac{3}{5}&1\\ \frac{11}{20}&0\end{bmatrix}
+\end{align*}
+\vspace{.1in}
+
+\item What do you notice about the last two columns of the reduced echelon form of $M$ and the matrix $N$\\
+\noindent \textbf{Answer: }They are the same, this makes sense because when we row reduce matrix $M$ we are finding the change of coordinates matrix from $C\to B$ and it should be clear that when when we multiply $P_b$ by the ${P_c}^{-1}$ we are essentially doing the same thing, for example take a vector written in terms of Basis $C$ when we multiply by ${P_c}^{-1}$ we are converting it to the standard basis, and finally we multiply it by $P_b$ to get it in terms of Basis $B$.
+\vspace{.1in}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%This is ##2
+\noindent\textbf{Exercise 2: }Let $B = \{b_1,b_2\}$ and $C = \{c_1,c_2\}$ be bases for $\RR^2$. find the change of coordinates matrix from $B \to C$ and from $C \to B$
+\begin{equation*}
+b_1 =
+\begin{bmatrix}
+9\\
+9
+\end{bmatrix},
+b_2 =
+\begin{bmatrix}
+-12\\
+6
+\end{bmatrix},
+c_1 =
+\begin{bmatrix}
+-5\\
+13
+\end{bmatrix},
+c_2 =
+\begin{bmatrix}
+14\\
+2
+\end{bmatrix},
+\end{equation*}
+
+\begin{enumerate}
+\item Set up the matrix $M$ whose columns are $[c_1,c_2,b_1.b_2]$\\
+\noindent \textbf{Answer: }
+\begin{align*}
+M &=
+\begin{bmatrix}
+-5&14&9&-12\\
+13&2&9&6
+\end{bmatrix}\\
+&\approx
+\begin{bmatrix}1&0&\frac{9}{16}&\frac{9}{16}\\ 0&1&\frac{27}{32}&-\frac{21}{32}\end{bmatrix}
+\end{align*}
+\vspace{.1in}
+
+\item Calculate ${P_c}^{-1}$, where  ${P_c} = [c_1,c_2].$\\
+\noindent \textbf{Answer: } Note that,
+\begin{equation*}
+{P_c} = 
+\begin{bmatrix}
+-5&14\\
+13&2
+\end{bmatrix}
+\end{equation*}
+Same as before, since we have a 2x2 matrix we can just multiply by the reciprocal of the determinant.
+\begin{align*}
+{P_c}^{-1} &= \frac{1}{-192} 
+*
+\begin{bmatrix}
+-5&14\\
+13&2
+\end{bmatrix}\\
+&=
+\begin{bmatrix}-\frac{1}{96}&\frac{7}{96}\\ \frac{13}{192}&\frac{5}{192}\end{bmatrix}
+\end{align*}
+\vspace{.1in}
+
+\Item Calculate $N = {P_c}^{-1}P_b$.\\
+\noindent \textbf{Answer: } Note that $P_b = [b_1,b_2]$ now through some matrix algebra we see that,
+\begin{align*}
+N &=
+\begin{bmatrix}-\frac{1}{96}&\frac{7}{96}\\ \frac{13}{192}&\frac{5}{192}\end{bmatrix}
+*
+\begin{bmatrix}
+9&-12\\
+9&6
+\end{bmatrix}\\
+&=
+\begin{bmatrix}\left(-\frac{1}{96}\right)\cdot \:9+\frac{7}{96}\cdot \:9&\left(-\frac{1}{96}\right)\left(-12\right)+\frac{7}{96}\cdot \:6\\ \frac{13}{192}\cdot \:9+\frac{5}{192}\cdot \:9&\frac{13}{192}\left(-12\right)+\frac{5}{192}\cdot \:6\end{bmatrix}\\
+&=
+\begin{bmatrix}\frac{9}{16}&\frac{9}{16}\\ \frac{27}{32}&-\frac{21}{32}\end{bmatrix}
+\end{align*}
+\vspace{.1in}
+\end{enumerate}
+
+
+
+\noindent\textbf{Exercise 3: } What is the pattern that we have established in exercises 1 and 2?\\
+\noindent \textbf{Answer: } I believe I have already addressed this question in exercise 1.5, and quite thoroughly as well.
+\vspace{.5in}
+
+\noindent\textbf{Exercise 4: }Suppose we are given bases $B = \{b_1,b_2,...b_n\}$ and $C = \{c_1,c_2,...,c_n\}$ for a finite dimensional vector space $V = R_n.$ Consider now the reduced row echelon form $M′$ of the matrix $M = [c_1,c_2,...,c_n,b_1,b_2,...b_n].$ Denote the columns of $M′$ by $m_1$. Thus for $i = 1,2,...,n$, $m_i = e_i$. What then are the vectors $m_i$ for $i = n+1,n+2,...,2n?$\\
+\noindent \textbf{Answer: } The vectors  $m_i$ for $i = n+1,n+2,...,2n$ form the change of coordinate matrix from $C \to B$ In other words they are the $C$- coordinate vectors in the basis $B$.
+\vspace{.1in}
+
+\noindent\textbf{Exercise 5: } For each Matrix $M$ obtained in exercises 1 and 2 compare ${P_c}^{-1}M$ and ${P_c}^{-1}P_b$\\
+\noindent \textbf{Answer: }Consider the following matrices from exercise 1,
+\begin{equation*}
+{P_c}^{-1}M=\begin{bmatrix}-\frac{1}{5}&\frac{1}{5}\\ \frac{3}{20}&\frac{1}{10}\end{bmatrix}*\begin{bmatrix}1&0&\frac{3}{5}&1\\ 0&1&\frac{11}{20}&0\end{bmatrix}
+=\begin{bmatrix}-\frac{1}{5}&\frac{1}{5}&-\frac{1}{100}&-\frac{1}{5}\\ \frac{3}{20}&\frac{1}{10}&\frac{29}{200}&\frac{3}{20}\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+{P_c}^{-1}P_b =\begin{bmatrix}-\frac{1}{5}&\frac{1}{5}\\ \frac{3}{20}&\frac{1}{10}\end{bmatrix}*\begin{bmatrix}
+1&-2\\
+4&3
+\end{bmatrix}
+=\begin{bmatrix}\frac{3}{5}&1\\ \frac{11}{20}&0\end{bmatrix}
+\end{equation*}
+Consider the following matrices from exercise 2,
+\begin{equation*}
+{P_c}^{-1}M=\begin{bmatrix}-\frac{1}{96}&\frac{7}{96}\\ \frac{13}{192}&\frac{5}{192}\end{bmatrix}*\begin{bmatrix}1&0&\frac{9}{16}&\frac{9}{16}\\ 0&1&\frac{27}{32}&-\frac{21}{32}\end{bmatrix}
+= \begin{bmatrix}-\frac{1}{96}&\frac{7}{96}&\frac{57}{1024}&-\frac{55}{1024}\\ \frac{13}{192}&\frac{5}{192}&\frac{123}{2048}&\frac{43}{2048}\end{bmatrix}
+
+
+\end{equation*}
+\begin{equation*}
+{P_c}^{-1}P_b =\begin{bmatrix}-\frac{1}{96}&\frac{7}{96}\\ \frac{13}{192}&\frac{5}{192}\end{bmatrix}*\begin{bmatrix}
+9&-12\\
+9&6
+\end{bmatrix}
+=\begin{bmatrix}\frac{9}{16}&\frac{9}{16}\\ \frac{27}{32}&-\frac{21}{32}\end{bmatrix}
+\end{equation*}
+They both essentially represent the same operation but because of the notation $M$ doesn't give us a useful answer when we change coordinates.\\
+\vspace{.1in}
+
+
+\noindent\textbf{Exercise 6: } What us the result of ${P_c}^{-1}P_b[x_b]$\\
+\noindent \textbf{Answer: } Well we can see that the following statement simplifies,
+\begin{equation*}
+{P_c}^{-1}P_b[x_b]={P_c}^{-1}x=[x]_c
+\end{equation*}
+and this is due to the fact that any $P_z$ change-of-coordinates matrix will convert $z$-coordinate vectors, ie $[x_z]$ into standard ones. It goes the opposite way for the inverse of a change-of-coordinates matrix, goes from standard to $z$-coordinate vectors.
+\vspace{.1in}
+
+\noindent\textbf{Exercise 7: } Explain why the change-of-coordinates matrix from $C \to B$ is equal to the inverse of the  change-of-coordinates matrix from $B \to C$\\
+\noindent \textbf{Answer: } This is discussed in the previous question. except instead of going in between the standard basis and the a $z$ basis its now a $c$ basis and a $b$ basis.
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

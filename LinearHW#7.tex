@@ -1,0 +1,279 @@
+%%% Preamble starts here.
+\documentclass{amsart}
+%for the heading
+\usepackage{fancyhdr, enumerate}
+%for the picture. 
+\usepackage{tikz}
+%adjust the page width
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\linespread{1.1}
+
+%special commands for number sets
+\def\RR{{\mathbb R}}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\CC{{\mathbb C}}
+
+\makeatletter
+\newcommand{\vo}{\vec{o}\@ifnextchar{^}{\,}{}}
+\makeatother
+
+% header
+\lhead{\sc  Linear Algebra: Homework 7}
+\chead{\sc Stefano Fochesatto } 
+\rhead{\today}
+\cfoot{}
+\pagestyle{fancy}
+
+%%%% Main document starts here.
+
+\begin{document}
+\thispagestyle{fancy}
+
+
+
+
+
+{\huge\textbf{Section 4.2:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 4.2.10: }  Either use an appropriate theorem to show that the given set  $W$ is a vector space, or find a specific example to the contrary. 
+\begin{equation*}
+\begin{bmatrix}
+a\\
+b\\
+c\\
+d\\
+\end{bmatrix}
+\end{equation*}
+\begin{align*}
+a+3b&=c\\
+b+c+a&=d
+\end{align*}
+\noindent \textbf{Solution: } Note that the space $W$ can be describe by the solutions to the system of homogeneous equations,
+\begin{align*}
+a+3b-c&=0\\
+b+c+a-d&=0
+\end{align*}
+Therefore by the definition of a null space we know that $W = null(A)$ such that,
+\begin{equation*}
+A=
+\begin{bmatrix}
+1& 3&-1&0\\
+1&1&1&-1
+\end{bmatrix}
+\end{equation*}
+Since $A$ is a 2x4 matrix we know by Theorem 2 that the $null(A)$ is a subspace of $\RR^4$. Therefore $W$  is a subspace of $\RR^4$.
+\vspace{1in}
+
+%%%second problem
+\noindent\textbf{Exercise 4.2.16: } In exercise 16, find $A$ such that the given set is $Col(A)$.\\
+\begin{equation*}
+W=
+\begin{bmatrix}
+b-c\\
+2b+c+d\\
+5c-4d\\
+d\\
+\end{bmatrix}
+\text{ $a,b,d$ are real}
+\end{equation*}
+\noindent \textbf{Solution: } Note that we can write $W$ as a set of linear combinations,
+\begin{equation*}
+W=
+b
+\begin{bmatrix}
+1\\
+2\\
+0\\
+0\\
+\end{bmatrix}
++
+c
+\begin{bmatrix}
+-1\\
+1\\
+5\\
+0\\
+\end{bmatrix}
++
+d
+\begin{bmatrix}
+0\\
+1\\
+-4\\
+1\\
+\end{bmatrix}
+\end{equation*}
+So all we have to do to find a matrix $A$ such that its columns span $W$ is take those vectors and make them the columns in our matrix. Consider,
+\begin{equation*}
+A=
+\begin{bmatrix}
+1&-1&0\\
+2&1&1\\
+0&5&-4\\
+0&0&1
+\end{bmatrix}
+\end{equation*}
+\vspace{1in}
+
+
+%%%third problem
+\noindent\textbf{Exercise 4.2.25: } $A$ denotes an $m x n$. Mark each statement True and False. Justify each answer.\\
+\begin{enumerate}
+
+\item The null space of $A$ is the solution set of the equation $Ax=0$.
+\noindent \textbf{Answer: } True. By the definition of a null space "is the set of all solutions of the homogeneous equation $Ax=0$"
+\vspace{1in}
+
+\item The null space of an $m x n$ matrix is in $\RR^m$.
+\noindent \textbf{Answer: } False. By Theorem 2 "the set of all solutions to a system $Ax = 0$(null space) of $m$ homogeneous linear equations with $n$ unknowns is subspace $\RR^n$". So $\RR^n$ instead $\RR^m$
+\vspace{1in}
+
+
+\item The column space $A$ is the range of the mapping $x \to Ax$.
+\noindent \textbf{Answer: } True. A consequence of the definition of the column space "The notation $Ax$ for vectors in $Col(A)$ also shows that $Col(A)$ is the range of the linear transformation $x \to Ax$ p.(203)"
+\vspace{1in}
+
+
+\item If the question $Ax=b$ is consistent, then $Col(A)$is $\RR^m$.
+\noindent \textbf{Answer: } False. The equation $Ax=b$ must be consistent for every vector $b$ in $\RR^m$ for $Col(A)  = \RR^m$.
+\vspace{1in}
+
+
+\item The kernel of a linear transformation is a vector space. 
+\noindent \textbf{Answer: } True. The kernel or null space in this case would be a subspace of $\RR^n$ by the definition of a null space, and its said explicitly in Theorem 2 "the null space of an $m x n$ matrix $A$ is a subspace of $\RR^n$"
+\vspace{1in}
+
+
+\item $Col(A)$ is the set of all vector that can be written as $Ax$ for some $x$.
+\noindent \textbf{Answer: } True. "Note that a typical vector in $Col(A)$ can be written a $Ax$ for some $x$ (p.203)" .
+\vspace{1in}
+\end{enumerate}
+
+
+
+%%%fourth problem
+\noindent\textbf{Exercise 4.2.29: } Prove Theorem 3 as follows: Given an m x n matrix $A$, an element in $Col(A)$ has the form $Ax$ for some $x$ in $\RR^n$. Let $Ax$ and $Aw$ represent any two vectors in $Col(A)$\\
+\begin{enumerate}
+
+\item Explain why the zero vector is in $Col(A)$
+\noindent \textbf{Solution: } We know by the definition of a column space that $Col(A) = Span \{a_1,a_2,...,a_n\}$. Therefore for every $b \in Col(A)$ we know that $b =c_1*a_1+c_2*a_2,...,c_n*a_n$ such that $c_i \in \RR$. We can simply let all the weights equal zero, $c_i = 0$. Thus $0 =0*a_1+0*a_2,...,0*a_n$ and therefore  $0 \in Col(A)$
+\vspace{1in}
+
+
+\item Show that a vector $Ax+Aw$ is in $Col(A)$ 
+\noindent \textbf{Solution: } We know that the notation $Ax$ stands for the linear combination of the columns of $A$ with the elements of the vector $x$ as weights. now consider that $Ax =x_1*a_1+x_2*a_2,...,x_n*a_n$ and $Aw = w_1*a_1+w_2*a_2,...,w_n*a_n$. Therefore $Ax + Aw = x_1*a_1+x_2*a_2,...,x_n*a_n +w_1*a_1+w_2*a_2,...,w_n*a_n$ Combining like terms we get $Ax + Aw = (x_1+m_1)*a_1+(x_2+m_2)*a_2,...,(x_n+m_n)*a_n$ Here we can see that since $(x_i+m_i) \in \RR$ we can say that, $Ax+Aw \in Span \{a_1,a_2,...,a_n\}$ and therefore, $Ax+Aw \in Col(A)$.
+\vspace{1in}
+
+
+\item Given a scalar $c$. show that $c(Ax)$ is in $Col(A)$
+\noindent \textbf{Solution: } We know that, $Ax =x_1*a_1+x_2*a_2,...,x_n*a_n$. Note that $c(Ax) =c(x_1*a_1+x_2*a_2,...,x_n*a_n)$ and then by expansion we get,   $c(Ax) =(c*x_1)*a_1+(c*x_2)*a_2,...,(c*x_n)*a_n)$ since $c*n_i \in \RR $ we know that $c(Ax) \in Col(A)$.
+\vspace{1in}
+
+
+\end{enumerate}
+
+
+
+
+
+{\huge\textbf{Section 4.3:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 4.3.21: } \\\\
+\begin{enumerate}
+
+
+\item A single vector by itself is linearly dependent.
+\noindent \textbf{Solution: } False. A set of vector can only be linearly dependent if there are two or more, by Theorem 4. It is true however if that said vector is the zero vector, then it is dependent by the dependence relation ie non trivial solutions to homogeneous equation.
+\vspace{1in}
+
+
+
+\item If $H = Span\{b_1,...b_p\}$, then $\{b_1,...b_p\}$ is a basis for $H$
+\noindent \textbf{Solution: } False. It is possible that there exists some vector in $H$ that is a linear combination of the others ie the set of vectors $H$ is linearly dependent, and therefore are not a basis. 
+\vspace{1in}
+
+
+
+\item The columns of an invertible n x n matrix form a basis in $\RR^n$.
+\noindent \textbf{Solution: } True. Consider that if the n x n matrix is invertible, it must have $n$ linear independent columns, and therefore it must have $n$ pivot rows so it must span $\RR^n$.
+\vspace{1in}
+
+
+\item A basis is a spanning set that is as large as possible. 
+\noindent \textbf{Solution: } False. By definition a basis is a spanning set that is as small as possible.
+\vspace{1in}
+
+
+
+
+
+\item In some cases, the linear dependence relations among the columns of a matrix can be affected by certain elementary row operations.
+\noindent \textbf{Solution: } False. " When A is row reduced to a matrix B, the columns of B are often totally different from the columns of A. However, the equations  $Ax = 0$ and $Bx = 0$ have exactly the same set of solutions. p.213"
+\vspace{1in}
+
+
+
+%%%second problem
+\noindent\textbf{Exercise 4.3.24: } Let $B = \{v_1,...,v_n\}$ be a linearly independent set in $\RR^n$. Explain why $B$ must be a basis for $\RR^n$\\
+\noindent \textbf{Solution: } By Theorem 6 we know that the pivot columns of a matrix $A$ for a basis for $Col(A)$. The associated matrix $A = [v_1,...,v_n]$ constructed by vectors in $B$ has n pivot columns, because $B$ is a linearly independent set. Since there are $n$ pivot columns then know that the matrix spans $\RR^n$ then by Theorem 6 it is clear that the columns of $A$, ie $B$ for a basis for $\RR^n$
+\vspace{1in}
+
+
+%%%third problem
+\noindent\textbf{Exercise 4.3.30: } Let $S =  \{v_1,...,v_k\}$ be a set of $k$ vectors in $\RR^n$, with $k>n$. Use a theorem from Chapter 1 to explain why $S$ cannot be a basis for $\RR^n$ \\
+
+\noindent \textbf{Solution: } By Theorem 8 of Chapter 1, which states "If a set contains more vectors than there are entries in each vector, then the set is linearly dependent," we know that the set $S$ must be linearly dependent and thus is not a basis $\RR^n$.
+\vspace{1in}
+
+
+%%%fourth problem
+\noindent\textbf{Exercise 4.3.31: } Show that if $\{v_1,...,v_p\}$ is a linearly dependent in $V$, then the set of images $\{T(v_1),...,T(v_p)\}$ is linearly dependent in $W$, This fact shows that if a linear transformation maps a set $\{v_1,...,v_p\}$ onto a linearly independent set $\{T(v_1),...,T(v_p)\}$ then the original set is linearly independent too.  \\
+\noindent \textbf{Solution: } Since it is given that  $\{v_1,...,v_p\}$ is a linearly dependent set we can write one vector as a linear combination of the others. Without loss of generality lets just say $v_p = c_1*v_1+,...+c_{p-1}*v_{p-1}$. From here we can take the transform of both sides, $T(v_p) = T(c_1*v_1+,...+c_{p-1}*v_{p-1})$. Since $T$ is a linear transformation it respects linear combinations, and thus the RHS simplifies, $T(v_p) = c_1*T(v_1)+,...+c_{p-1}*T(v_{p-1})$ and thus we have written an element in the set  $\{T(v_1),...,T(v_p)\}$ as a linear combination of the others, therefore the set  $\{T(v_1),...,T(v_p)\}$ is linearly dependent.
+\vspace{1in}
+
+
+
+{\huge\textbf{Section 4.4:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 4.4.23: }A vector space $V$, a basis $B =\{b_1,...,b_n\}$, and the coordinate mapping $x \to [x]_b$. Show that the coordinate mapping is one-to-one.\\
+\noindent \textbf{Solution: } Direct Proof: Let $u,v \in V$ such that $[u]_b = [v]_b$. In order to prove that the mapping is one to one we NTS that $u=v$. Note that since $B$ is a basis $V$ we can write vectors in $V$ as a linear combination of the vectors in $B$. Therefore, $u =c_1*b_1+,...+c_{n}*b_{n}$ and  $v =a_1*b_1+,...+a_{n}*b_{n}$. by the definition of the coordinate mapping $x \to [x]_b$ we know that $[u]_b = c_1,c_2,...,c_n$ and $[v]_b = a_1,a_2,...,a_n$. Since $[u]_b = [v]_b$ by substitution $c_1,c_2,...,c_n= a_1,a_2,...,a_n$. Therefore it follow that from $u =c_1*b_1+,...+c_{n}*b_{n}$ and  $v =a_1*b_1+,...+a_{n}*b_{n}$ that $u=v$. Thus the coordinate mapping is one-to-one.
+\vspace{1in}
+
+%%%second problem
+\noindent\textbf{Exercise 4.4.24: }A vector space $V$, a basis $B =\{b_1,...,b_n\}$, and the coordinate mapping $x \to [x]_b$. Show that the coordinate mapping is onto. That is , given any $y$ with entries, $y_1,y_2,...y_n$ produce a $u$ in $V$ such that $[u]_b = y$\\
+\noindent \textbf{Solution: } Direct Proof: Suppose $y \in \RR^n$ with entries, $y_1,y_2,...y_n$. In order to show that the coordinate mapping is onto, we must construct, a vector $u \in V$ such that $[u]_b = y$. It is given that $B =\{b_1,...,b_n\}$ forms a basis for $V$ therefore we can let $u =y_1*b_1,...,y_n*b_n$ we know that this vector exists and is unique in $V$ by Theorem 7 in Chapter 4. Thus the coordinate mapping is onto.
+\vspace{1in}
+
+
+%%%third problem
+\noindent\textbf{Exercise 4.4.25: }A vector space $V$, a basis $B =\{b_1,...,b_n\}$, and the coordinate mapping $x \to [x]_b$. Show that a subset $\{u_1,..,u_p\}$ in $V$ is linearly independent if and only of the set of coordinate vectors $\{[u_1]_b,..,[u_p]_b\}$ \\
+\noindent \textbf{Solution: } Because coordinate mapping is a linear transformation we know that $c_1u_1+...+c_pu_p = 0$ and  $[c_1u_1+...+c_pu_p]_b = [0]_b$ have the same weights, ie $[c_1u_1+...+c_pu_p]_b = [0]_b$ is equivalent to $c_1[u_1]_b+...+c_p[u_p]_b = [0]_b$. Since they have the same solutions, we can say that every subset of $V$ that has only the trivial solution to the dependence relation is also linearly independent in the space that it's been transformed too, ie $\{u_1,..,u_p\}$ is linearly independent in $V$ and $\{[u_1]_b,..,[u_p]_b\}$ is linearly independent in $\RR^n$. This works vice versa because the mapping is bijective as we have proven in the problems before. 
+\vspace{1in}
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

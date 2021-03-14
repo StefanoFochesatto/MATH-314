@@ -1,0 +1,654 @@
+%%% Preamble starts here.
+\documentclass{amsart}
+%for the heading
+\usepackage{fancyhdr, enumerate}
+%for the picture. 
+\usepackage{tikz}
+%adjust the page width
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\linespread{1.1}
+
+%special commands for number sets
+\def\RR{{\mathbb R}}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\CC{{\mathbb C}}
+\def\PP{{\mathbb P}}
+
+\makeatletter
+\newcommand{\vo}{\vec{o}\@ifnextchar{^}{\,}{}}
+\makeatother
+
+% header
+\lhead{\sc  Linear Algebra: Homework 11}
+\chead{\sc Stefano Fochesatto } 
+\rhead{\today}
+\cfoot{}
+\pagestyle{fancy}
+
+%%%% Main document starts here.
+
+\begin{document}
+\thispagestyle{fancy}
+
+
+
+
+
+{\huge\textbf{Section 6.3:}}\\\\
+
+
+%%%first problem
+\noindent\textbf{Exercise 6.3.14: }Find the best approximation to $z$ by the vectors of the form $c_1v_1+c_2v_2$.
+\begin{equation*}
+z = 
+\begin{bmatrix}
+2\\
+4\\
+0\\
+-1
+\end{bmatrix}, 
+v_1 = 
+\begin{bmatrix}
+2\\
+0\\
+-1\\
+-3
+\end{bmatrix}, 
+v_2 = 
+\begin{bmatrix}
+5\\
+-2\\
+4\\
+2
+\end{bmatrix}
+\end{equation*}
+\textbf{Solution: }We are looking for the orthogonal projection of $z$ onto the span of $v_1,v_2$. So using the orthogonal projection theorem we get,
+\begin{align*}
+\hat{z} &= \frac{z\cdot v_1}{v_1 \cdot v_1}
+\begin{bmatrix}
+2\\
+0\\
+-1\\
+-3
+\end{bmatrix}
++
+\frac{z\cdot v_2}{v_2 \cdot v_2}
+\begin{bmatrix}
+5\\
+-2\\
+4\\
+2
+\end{bmatrix}\\
+&=
+ \frac{7}{14}
+\begin{bmatrix}
+2\\
+0\\
+-1\\
+-3
+\end{bmatrix}
++
+\frac{0}{49}
+\begin{bmatrix}
+5\\
+-2\\
+4\\
+2
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+1\\
+0\\
+\frac{-1}{2}\\
+\frac{-3}{2}
+\end{bmatrix}
++
+0
+\end{align*}
+So we can see that the best approximation of $z$ in the form of $c_1v_1+c_2v_2$ is ,
+\begin{equation*}
+\hat{z} = 
+\begin{bmatrix}
+1\\
+0\\
+\frac{-1}{2}\\
+\frac{-3}{2}
+\end{bmatrix}
+\end{equation*}
+
+
+\vspace{1in}
+
+
+
+
+
+%%%first problem
+\noindent\textbf{Exercise 6.3.22: }All vectors and subspaces are in $R^n$. Mark each statement True or False.\\
+
+\begin {enumerate}
+
+\item If $W$ is a subspace of $R^n$ and of $v$ is in both $W$ and $W^\perp$ then $v$ must be the zero vector.\\
+\textbf{Solution: }True. The only vector that can be doted with itself and still result in zero is the zero vector. Consider the definition of orthogonal and definition of orthogonal sets.
+\vspace{1in}
+
+\item In the Orthogonal Decomposition Theorem, each term in formula (2) for $\hat{y}$ is itself an orthogonal projection of $y$ onto subspace $W$\\
+\textbf{Solution: }True. Consider this excerpt from page 351,\\
+
+"When $W$ is a one-dimensional subspace, the formula (2) for $proj_{W}y$ contains just one term. Thus, when dim $W > 1$, each term in (2) is itself an orthogonal projection of $y$ onto a one-dimensional subspace spanned by one of the u’s in the basis for $W$ "
+\vspace{1in}
+
+\item If $y = z_1+z_2$, where $z_1$ is in the subspace of $W$ and $z_2$ is in $W^\perp$, then $z_1$ must be the orthogonal projection of $y$ onto $W$\\
+\textbf{Solution: }True. If $y$ is composed of two orthogonal vectors, $z_1$ and $z_2$ then those vectors are the orthogonal projections of $y$ onto their respective subspaces. For clarity reference figure 3 on page 351.
+\vspace{1in}
+
+\item The best approximation to $y$ by elements of a subspace $W$ is given by the vector $y - proj_{W}y$\\
+\textbf{Solution: }False.The best approximation of $y$ by the elements in the subspace $W$ is given by just the $proj_{W}y$, also consider Theorem 9.
+\vspace{1in}
+
+\item If an nxp matrix $U$ has orthonormal columns, then $UU^Tx = x$ for all $x$ in $R^n$\\
+\textbf{Solution: } False. Statement is only true when $x$ is an element of the column space of $U$. Consider Theorem 10 that gives the equality "$proj_{W}y = UU^Ty$, s.t $U$ is a orthonormal basis for $W$". 
+\vspace{1in}
+
+
+\end{enumerate}
+
+
+
+
+
+
+%%%first problem
+\noindent\textbf{Exercise 6.3.24: }Let $W$ be a subspace of $R^N$ with an orthogonal basis $\{w_1,...,w_p\}$ and let $\{v_1,...v_q\}$ be an orthogonal basis for $W^\perp$\\
+\begin{enumerate}
+
+\item Explain why $\{w_1,...,w_p,v_1,...v_q\}$ is an orthogonal set.\\
+\textbf{Solution: } Note, each vector in the set $\{w_1,...,w_p\}$ is pair-wise orthogonal, by the definition of an orthogonal basis, and likewise for the set $\{v_1,...v_q\}$. By our definition of orthogonal compliments we know that any pair of vectors taken from $W^\perp$ and $W$ will be orthogonal, it must be true that the union of both $\{w_1,...,w_p\}$ and $\{v_1,...v_q\}$ creates an orthogonal set as well.
+\vspace{1in}
+
+
+\item Explain why the set in part (a) spans $R^n$\\
+\textbf{Solution: } Consider the Orthogonal Decomposition Theorem that states any $y$ in $R^n$ can be written as $y = \hat{y} + z$ such that $\hat{y}$ is from $W$ and $z$ is from $W^\perp$. Since $\hat{y}$ and $z$ can be written as linear combinations of the vectors in  $W^\perp$ and $W$ respectively, it must follow that $y$ can be written as a linear combination of the vectors in $W$ union $W^\perp$.
+
+\vspace{1in}
+
+
+\item Show that $dim W^\perp + dim W = n$\\
+\textbf{Solution: } Since the set $\{w_1,...,w_p,v_1,...v_q\}$ is an orthogonal set, it has linearly independent vectors. We know that $\{w_1,...,w_p,v_1,...v_q\}$ spans $R^n$, therefore we know that $dim W^\perp + dim W  = q + p = n$.
+\vspace{1in}
+
+\vspace{1in}
+
+
+
+
+
+{\huge\textbf{Section 6.4:}}\\\\
+
+
+
+\noindent\textbf{Exercise 6.4.4: } the given set is a basis for the subspace $W$. Use the Gram-Schmidt process to produce the orthogonal basis $W$,
+\begin{equation*}
+x_1 = 
+\begin{bmatrix}
+3\\
+-4\\
+5
+\end{bmatrix},
+x_2 = 
+\begin{bmatrix}
+-3\\
+14\\
+-7
+\end{bmatrix}
+\end{equation*} 
+\textbf{Solution: } First we let,
+\begin{equation*}
+v_1 = x_1 = 
+\begin{bmatrix}
+3\\
+-4\\
+5
+\end{bmatrix}
+\end{equation*}
+Then by the Gram-Schmidt Process we calculate $v_2$,
+\begin{align*}
+v_2 &= x_1 - \frac{x_2 \cdot v_1}{v_1 \cdot v_1}v_1\\ 
+&=
+\begin{bmatrix}
+-3\\
+14\\
+-7
+\end{bmatrix}
+-
+\frac{-100}{50}
+\begin{bmatrix}
+3\\
+-4\\
+5
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+3\\
+6\\
+3
+\end{bmatrix}
+\end{align*}
+So then the orthogonal basis $W$ is,
+\begin{equation*}
+\left\{
+\begin{bmatrix}
+3\\
+-4\\
+5
+\end{bmatrix}
+,
+\begin{bmatrix}
+3\\
+6\\
+3
+\end{bmatrix}
+\right\}
+\end{equation*}
+\vspace{1in}
+
+
+
+\noindent\textbf{Exercise 6.4.12: }Find the orthogonal basis for the column space of each matrix,
+\begin{equation*}
+\begin{bmatrix}
+1 &3&  5\\
+-1&-3&1\\
+0&2&3\\
+1&5&2\\
+1&5&8
+\end{bmatrix}
+\end{equation*}
+
+\textbf{Solution: } First let,
+\begin{equation*}
+v_1 = x_1 = 
+\begin{bmatrix}
+1\\
+-1\\
+0\\
+1\\
+1
+\end{bmatrix}
+\end{equation*}
+Then calculating $v_2$,
+\begin{align*}
+v_2 &= x_2  - \frac{x_2 \cdot v_1}{v_1 \cdot v_1}v_1\\
+&= 
+\begin{bmatrix}
+3\\
+-3\\
+2\\
+5\\
+5
+\end{bmatrix} -
+\frac{16}{4}
+\begin{bmatrix}
+1\\
+-1\\
+0\\
+1\\
+1
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+-1\\
+1\\
+2\\
+1\\
+1
+\end{bmatrix}
+\end{align*}
+Now calculating $v_3$,
+\begin{align*}
+v_3 &= x_3  - \frac{x_3 \cdot v_1}{v_1 \cdot v_1}v_1 - \frac{x_3 \cdot v_2}{v_2 \cdot v_2}v_2\\
+&=
+\begin{bmatrix}
+5\\
+1\\
+3\\
+2\\
+8
+\end{bmatrix} -
+\frac{14}{4}
+\begin{bmatrix}
+1\\
+-1\\
+0\\
+1\\
+1
+\end{bmatrix} - 
+\frac{12}{2}
+\begin{bmatrix}
+-1\\
+1\\
+2\\
+1\\
+1
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+3\\
+3\\
+0\\
+-3\\
+3
+\end{bmatrix}
+\end{align*}
+Finally we can see the the orthogonal basis for the column space is,
+
+\begin{equation*}
+\left\{
+\begin{bmatrix}
+1\\
+-1\\
+0\\
+1\\
+1
+\end{bmatrix}
+,
+\begin{bmatrix}
+-1\\
+1\\
+2\\
+1\\
+1
+\end{bmatrix}
+,
+\begin{bmatrix}
+3\\
+3\\
+0\\
+-3\\
+3
+\end{bmatrix}
+\right\}
+\end{equation*}
+\vspace{1in}
+
+\noindent\textbf{Exercise 6.4.18: } All vectors and subspaces are in $R^n$. Mark Each statement True, or False\\
+
+\begin{enumerate}
+
+\item If $W = Span\{x_1,x_2,x_3\}$ with $\{x_1,x_2,x_3\}$ linearly independent and if $\{v_1,v_2,v_3\}$ is an orthogonal set in $W$, then $\{v_1,v_2,v_3\}$ is a basis for $W$\\
+\textbf{Solution: }True. By our definition being $W = Span\{x_1,x_2,x_3\}$ we know that any set of three linearly independent vectors that span $W$ must also be a basis for $W$. An Orthogonal set is also defined as a set of linearly independent vectors, where pair - wise vectors are orthogonal. Thus $\{v_1,v_2,v_3\}$ spans $W$ and therefore is also a basis for $W$.
+\vspace{1in}
+
+\item If $x$ is not in a subspace $W$, then $x - proj_{W}x$ is not zero.\\
+\textbf{Solution: }True. If $x$ is not in the subspace $W$ then it can never have the same magnitude as $proj_{W}x$ and therefore $x - proj_{W}x \neq 0$.
+\vspace{1in}
+
+\item In a QR factorization, say $A = QR$ (when $A$ has linearly independent columns), the columns of $Q$ form an orthonormal basis for the column space of $A$.\\
+\textbf{Solution: }True. Consider Theorem 12 Chapter 6.4.
+\vspace{1in}
+\end{enumerate}
+
+
+
+
+{\huge\textbf{Section 6.5:}}\\\\
+
+
+\noindent\textbf{Exercise 6.5.14: }Let,
+\begin{equation*}
+A = 
+\begin{bmatrix}
+2&1\\
+-3&-4\\
+3&2
+\end{bmatrix},
+b = 
+\begin{bmatrix}
+5\\
+4\\
+4
+\end{bmatrix}, 
+u = 
+\begin{bmatrix}
+4\\
+-5
+\end{bmatrix}
+v = 
+\begin{bmatrix}
+6\\
+-5
+\end{bmatrix}
+\end{equation*}
+Compute $Au$ and $Av$, and compare them with $b$. Is it possible that at least one of $u$ or $v$ could be a least-squares solution of $Ax = b$? (Do not compute least-squares solution)\\\\
+\textbf{Solution: }Computing $Au$ and $Av$,
+\begin{equation*}
+Au = 
+\begin{bmatrix}
+2&1\\
+-3&-4\\
+3&2
+\end{bmatrix}
+\begin{bmatrix}
+4\\
+-5
+\end{bmatrix}
+ = 
+ \begin{bmatrix}
+3\\
+8\\
+2
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+Av = 
+\begin{bmatrix}
+2&1\\
+-3&-4\\
+3&2
+\end{bmatrix}
+\begin{bmatrix}
+6\\
+-5
+\end{bmatrix}
+ = 
+ \begin{bmatrix}
+7\\
+2\\
+8
+\end{bmatrix}
+\end{equation*}
+Now we calculate $b - Au$ and $b - Av$,
+\begin{equation*}
+b - Au = 
+\begin{bmatrix}
+5\\
+4\\
+4
+\end{bmatrix} - 
+\begin{bmatrix}
+3\\
+8\\
+2
+\end{bmatrix} = 
+ \begin{bmatrix}
+2\\
+-4\\
+2
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+b - Av = 
+\begin{bmatrix}
+5\\
+4\\
+4
+\end{bmatrix} - 
+ \begin{bmatrix}
+7\\
+2\\
+8
+\end{bmatrix} = 
+ \begin{bmatrix}
+-2\\
+2\\
+-4
+\end{bmatrix}
+\end{equation*}
+Finally we want to calculate the magnitude of $b - Av$ and $b - Au$ to see if either $u$ or $v$ could be the least squares solution.
+\begin{equation*}
+||b - Au|| = \sqrt{2^2+(-4)^2+2^2} = \sqrt{24}
+\end{equation*}
+\begin{equation*}
+||b - Av|| = \sqrt{(-2)^2+2^2+(-4)^2} = \sqrt{24}
+\end{equation*}
+Since the least squares solution is unique neither $u$ or $v$ is the least squares solution.
+\vspace{1in}
+
+
+
+
+\noindent\textbf{Exercise 6.5.18: } $A$ is a an m x n matrix and $b$ is in $R^m$. Mark each statement True or False.\\
+
+\begin{enumerate}
+
+\item If $b$ is in the column space of $A$, then every solution of $Ax = b$ is a least-squares solution.\\
+\textbf{Solution: }True. Consider this excerpt from page 362,\\
+"So we seek an $x$ that makes $Ax$ the closest point in $Col A$ to $b$. See Figure 1. (Of course, if $b$ happens to be in $Col A$, then $b$ is $Ax$ for some $x$, and such an $x$ is a “least-squares solution.”)". the solution is also a vector not a point.
+\vspace{1in}
+
+\item The least - squares solution of $Ax = b$ is the point in the columns space of $A$ that is closest to $b$.\\
+\textbf{Solution: }True. By definition of Least Squares solution, normally the solution though is written as $A\hat{x} = b$, but it's the same thing the least squared solution is the vector in the span of $A$ that is closest to $b$.
+\vspace{1in}
+
+
+\item A least - squares solution of $Ax = b$ is a list of weights that, when applied to the columns of $A$ produces the orthogonal projections of be onto $Col A$\\
+\textbf{Solution: }True. Consider the following excerpt from page 363,\\
+"Since $\hat{b}$ is the closest point in $Col A to b$, a vector $\hat{x}$ is a least-squares solution of $Ax = b$ if and only if $\hat{x}$ satisfies (1). Such an $\hat{x}$ in $R^n$ is a list of weights that will build $\hat{b}$ out of the columns of $A.$ See Figure 2."
+\vspace{1in}
+
+
+\item If $\hat{x}$ is a least-squares solution of $Ax = b$, then $\hat{x} = (A^TA)^{-1}A^Tb$
+\textbf{Solution: }False. Columns of $A$ must be linearly independent for this Theorem to work.
+\vspace{1in}
+
+
+\item The normal equations always provide a reliable method for computing least - squares solutions.\\
+\textbf{Solution: }False. Consider the excerpt form page 363\\
+"In some cases, the normal equations for a least-squares problem can be ill- conditioned; that is, small errors in the calculations of the entries of $A^TA$ can sometimes cause relatively large errors in the solution $\hat{x}$."
+\vspace{1in}
+
+
+
+\item If $A$ has a $QR$ factorization, say $A = QR$, then the best way to compute the least-square solution of $Ax = b$ is to compute $\hat{x} = R^{-1}Q^Tb$
+\textbf{Solution: } False. The Numerical Note on page 367 says that the best way to compute the least-square solution is to use $Rx = Q^Tb$.
+\vspace{1in}
+
+
+
+
+\noindent\textbf{Exercise 6.5.25: } Describe all least-squares solutions of the system,
+\begin{equation*}
+A = 
+\begin{bmatrix}
+1&1\\
+1&1
+\end{bmatrix}
+b = 
+\begin{bmatrix}
+2\\
+4
+\end{bmatrix}
+\end{equation*}
+
+\textbf{Solution: } the least - squares solution can be found by solving, 
+\begin{equation*}
+A^TAx = A^Tb
+\end{equation*}
+So,
+\begin{equation*}
+A^Tb = 
+\begin{bmatrix}
+1&1\\
+1&1
+\end{bmatrix}
+\begin{bmatrix}
+2\\
+4
+\end{bmatrix}
+ = 
+ \begin{bmatrix}
+6\\
+6
+\end{bmatrix}
+\end{equation*}
+and,
+\begin{equation*}
+A^TA = 
+\begin{bmatrix}
+1&1\\
+1&1
+\end{bmatrix}
+\begin{bmatrix}
+1&1\\
+1&1
+\end{bmatrix}
+ = 
+ \begin{bmatrix}
+2&2\\
+2&2
+\end{bmatrix}
+\end{equation*}
+Thus we solve the following,
+\begin{equation*}
+ \begin{bmatrix}
+2&2\\
+2&2
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+ = 
+\begin{bmatrix}
+6\\
+6
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+ \begin{bmatrix}
+2&2&6\\
+2&2&6
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+ \begin{bmatrix}
+1&1&3\\
+0&0&0
+\end{bmatrix}
+\end{equation*}
+So our solution is,
+\begin{align*}
+x &= 3 - y\\
+y &= y
+\end{align*}
+Where $y$ is free. So the Least-Square Solution is,
+\begin{equation*}
+ \begin{bmatrix}
+3 - y\\
+y
+\end{bmatrix}
+\text{ such that $y \in R$}
+\end{equation*}
+\vspace{1in}
+
+
+
+
+
+
+
+\end{document}

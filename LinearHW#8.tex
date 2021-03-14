@@ -1,0 +1,467 @@
+%%% Preamble starts here.
+\documentclass{amsart}
+%for the heading
+\usepackage{fancyhdr, enumerate}
+%for the picture. 
+\usepackage{tikz}
+%adjust the page width
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\linespread{1.1}
+
+%special commands for number sets
+\def\RR{{\mathbb R}}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\CC{{\mathbb C}}
+\def\PP{{\mathbb P}}
+
+\makeatletter
+\newcommand{\vo}{\vec{o}\@ifnextchar{^}{\,}{}}
+\makeatother
+
+% header
+\lhead{\sc  Linear Algebra: Homework 8}
+\chead{\sc Stefano Fochesatto } 
+\rhead{\today}
+\cfoot{}
+\pagestyle{fancy}
+
+%%%% Main document starts here.
+
+\begin{document}
+\thispagestyle{fancy}
+
+
+
+
+
+{\huge\textbf{Section 4.5:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 4.5.19: }
+\begin{enumerate}
+
+\item The number of pivot columns of a matrix equals the dimension of it's column space.\\
+\noindent \textbf{Answer: } True. By Theorem 6 which says that the pivot columns of a matrix $A$ for a basis for the $Col(A)$. Therefore it must be true that the number of pivot columns is equal to the number of pivots.
+\vspace{1in}
+
+
+\item A plane in $\RR^{3}$ is a two-dimensional subspace pf $\RR^3$.\\
+\noindent \textbf{Answer: } False. Consider a plane that does not go through the origin, It cannot be a subspace.
+\vspace{1in}
+
+
+\item The dimension of vector space $\PP_4$ is 4.\\
+\noindent \textbf{Answer: } False. $\PP_4$ is all fourth degree polynomials, which have 5 coefficients. Therefore the dimension of $\PP_4$ is 5.\\
+\vspace{1in}
+
+
+\item If the $Dim V = n$ and $S$ is linearly independent set in $V$ , then $S$ is a basis for $V$.\\
+\noindent \textbf{Answer: } False. It is possible that the set $S$ does not span $V$ therefore it is not always a basis. Consider any $V= \RR^2$ and $S = [1,1]$, S is a linearly independent set that contains one vector, but It doesn't span $\RR^2$  therefore it is not a basis.
+\vspace{1in}
+
+
+\item If a set $\{v_1,...v_p \}$ spans a finite-dimensional vector space $V$ and if $T$ is a set of more than $p$ vectors in $V$, then $T$ is linearly dependent.\\
+\noindent \textbf{Answer: } True. By spanning set theorem.
+\vspace{1in}
+ 
+ 
+ \end{enumerate}
+
+%%%second problem
+\noindent\textbf{Exercise 4.5.22: } The first four Laguerre polynomials are $1, 1-t,2-4t+t^2$, and $6-18t+9t^2-t^3$ show that these polynomials for a basis for $\PP_3$\\
+\noindent \textbf{Solution: } Consider the Laguerre polynomials in the form of coordinate vectors,\\
+\begin{equation}
+\begin{bmatrix}
+1 &1&2&6\\
+0&-1&-4&-18\\
+0&0&1&9\\
+0&0&0&-1
+\end{bmatrix}
+\end{equation}
+It is clear that we have 4 linearly independent vectors, which means that the given vector span $\PP_3$. Through the spanning set theorem we can say the form a basis for. $\PP_3$ because the set is linearly independent. 
+\vspace{1in}
+
+%%%third problem
+\noindent\textbf{Exercise 4.5.24: }Let $B$ be a basis for $\PP_2$ consisting of the first three Laguerre polynomials, and let $p(t) = 7-8t+3t^2$. Find the coordinate vector of $p$ relative to $B$. \\
+
+\noindent \textbf{Solution: } Consider the following matrix equation,
+\begin{equation}
+\begin{bmatrix}
+1 &1&2\\
+0&-1&-4\\
+0&0&1
+\end{bmatrix}
+[P]_b = 
+\begin{bmatrix}
+7\\
+-8\\
+3
+\end{bmatrix}
+\end{equation}
+All we have to do now is solve the system. Consider the following matrix,
+\begin{equation}
+\begin{bmatrix}
+1 &0&0&5\\
+0&1&0&-4\\
+0&0&1&3
+\end{bmatrix}
+\end{equation}
+So we can see that the solution i.e, $[P]_b = \begin{bmatrix}
+5\\
+-4\\
+3
+\end{bmatrix}$ 
+\vspace{1in}
+
+
+
+
+{\huge\textbf{Section 4.6:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 4.6.17: } A is an n x m matrix.\\
+\begin{enumerate}
+
+\item The row space of $A$ is the same as the column space of $A^T$.\\
+\noindent \textbf{Answer: } True. The rows of $A$ are the columns of $A^T$, and pivot positions stay the same through transpose.
+\vspace{1in}
+
+\item If $B$ is any echelon form of $A$, and if $B$ has three nonzero rows, then the first three rows of $A$ form a basis for Row $A$.\\
+\noindent \textbf{Answer: } False. The non zero rows of $B$ form the basis for Row $A$.
+\vspace{1in}
+
+\item The dimensions of the row space and the columns space of $A$ are the same, even if $A$ is not a square.\\
+\noindent \textbf{Answer: } True. Pivot positions determine the dimensions of the column and row spaces. Since a pivot column is also a pivot row the have the same dimension.
+\vspace{1in}
+
+\item The sum fo the dimensions of the row space and the null space $A$ equals the number of rows in $A$.\\
+\noindent \textbf{Answer: } False. By the rank-nullity that the dimension of the row space is equal to $n - dim Nul A$. Let $n = 5$ and $dim Nul A = 2$  then $dim row A  = 3$ and $3 \neq 2$.
+\vspace{1in}
+
+\item On a computer, row operation can change the apparent rank of a matrix.\\
+\noindent \textbf{Answer: } True.  Consider the numerical note in page 238.
+\vspace{1in}
+
+\end{enumerate}
+
+%%%second problem
+\noindent\textbf{Exercise 4.6.20: }Suppose a non homogeneous system of six linear equations in eight unknown has a solution, with two free variables. Is it possible to change some constants on the equations right side to make the new system inconsistent. 
+\noindent \textbf{Solution: } First let's describe the dimensions of all the spaces of the associated matrix. Let $A$ be the associated matrix, since there are two free variable we know that the $dim null A  = 2$. Then we can use the rank-nullity theorem to find the rank of the matrix, $rank A = 8 - 2 = 6$ Thus we know that the $dim Col A  = 6$ which means there are pivot positions. Since there is a pivot in every row ,ie nor zero rows we cannot make the system inconsistent by changing the RHS.
+\vspace{1in}
+
+
+%%%third problem
+\noindent\textbf{Exercise 4.6.28: } Justify the following equalities(let A be m x n).
+\begin{equation}
+dim Row A + dim Nul A  = n
+\end{equation}
+\begin{equation}
+dim Col A + dim Nul A^T  = M
+\end{equation}
+\noindent \textbf{Solution: } We can explain the first equality by simply noting that the $dim Row A = dim Col A$ this comes from the property that the dimension for both spaces is determined by the number of pivot position (a pivot is a pivot for a row and a column just the same.) The the equality become the same as the rank - nullity theorem.\\
+
+The second is just a variation once note that $dim Col A = dim Row A^T$.
+\vspace{1in}
+
+
+
+
+
+{\huge\textbf{Section 4.7:}}\\\\
+%%%first problem
+
+\noindent\textbf{Exercise 4.7.7: } Let $B = \{b_1,b_2\}$ and $C = \{c_1,c_2\}$ be bases for $\RR^2$. find the change of coordinates matrix from $B \to C$ and from $C \to B$
+\begin{equation*}
+b_1 =
+\begin{bmatrix}
+7\\
+5
+\end{bmatrix},
+b_2 =
+\begin{bmatrix}
+-3\\
+-1
+\end{bmatrix},
+c_1 =
+\begin{bmatrix}
+1\\
+-5
+\end{bmatrix},
+c_2 =
+\begin{bmatrix}
+-2\\
+2
+\end{bmatrix},
+\end{equation*}
+
+\noindent \textbf{Solution: } In order to solve for the change of coordinates matrix we take the same approach we used for finding the inverse of a matrix, for example consider, the change of coordinates matrix from $B \to C$
+ \begin{align}
+ \begin{bmatrix}
+ 1&-2\\
+ -5&2
+ \end{bmatrix}
+&\approx 
+  \begin{bmatrix}
+ 7&-3\\
+ 5&-1
+ \end{bmatrix}\\
+  \begin{bmatrix}
+ 1&-2\\
+ 0&-8
+ \end{bmatrix}
+&\approx 
+  \begin{bmatrix}
+ 7&-3\\
+ 40&-16
+ \end{bmatrix}\\
+   \begin{bmatrix}
+ 1&-2\\
+ 0&1
+ \end{bmatrix}
+&\approx 
+  \begin{bmatrix}
+ 7&-3\\
+ -5&2
+ \end{bmatrix}\\
+   \begin{bmatrix}
+ 1&0\\
+ 0&1
+ \end{bmatrix}
+&\approx 
+  \begin{bmatrix}
+-3&1\\
+ -5&2
+ \end{bmatrix}
+ \end{align}
+ Thus the change of coordinates matrix from $B \to C$ is,
+\begin{equation*}
+  \begin{bmatrix}
+-3&1\\
+ -5&2
+ \end{bmatrix}
+\end{equation*}.
+The same technique is done to get the change of coordinates matrix from $C \to B$,
+\begin{align}
+\begin{bmatrix}
+ 7&-3\\
+ 5&-1
+ \end{bmatrix}
+&\approx 
+ \begin{bmatrix}
+ 1&-2\\
+ -5&2
+ \end{bmatrix}\\
+\begin{bmatrix}
+ 1&0\\
+0&1
+ \end{bmatrix}
+&\approx 
+ \begin{bmatrix}
+ -2&1\\
+ -5&3
+ \end{bmatrix}
+ \end{align}
+Thus the change of coordinates matrix from $C \to B$,
+\begin{equation*}
+ \begin{bmatrix}
+ -2&1\\
+ -5&3
+ \end{bmatrix}
+\end{equation*}
+\vspace{1in}
+
+
+
+
+%%%second problem
+\noindent\textbf{Exercise 4.7.9: }Let $B = \{b_1,b_2\}$ and $C = \{c_1,c_2\}$ be bases for $\RR^2$. find the change of coordinates matrix from $B \to C$ and from $C \to B$
+\begin{equation*}
+b_1 =
+\begin{bmatrix}
+-6\\
+-1
+\end{bmatrix},
+b_2 =
+\begin{bmatrix}
+2\\
+0
+\end{bmatrix},
+c_1 =
+\begin{bmatrix}
+2\\
+-1
+\end{bmatrix},
+c_2 =
+\begin{bmatrix}
+6\\
+-2
+\end{bmatrix},
+\end{equation*}
+
+\noindent \textbf{Solution: } Here we can take the same approach as we did for the last problem. Consider the change of coordinates matrix from $B \to C$,
+\begin{align}
+ \begin{bmatrix}
+ 2&6\\
+ -1&-2
+ \end{bmatrix}
+&\approx 
+  \begin{bmatrix}
+ -6&2\\
+ -1&0
+ \end{bmatrix}\\
+ \begin{bmatrix}
+ 1&3\\
+ -1&-2
+ \end{bmatrix}
+&\approx 
+  \begin{bmatrix}
+ -3&1\\
+ -1&0
+ \end{bmatrix}\\
+ \begin{bmatrix}
+ 1&3\\
+ 0&1
+ \end{bmatrix}
+&\approx 
+  \begin{bmatrix}
+ -3&1\\
+ -4&1
+ \end{bmatrix}\\
+ \begin{bmatrix}
+ 1&0\\
+ 0&1
+ \end{bmatrix}
+&\approx 
+  \begin{bmatrix}
+ 9&-2\\
+ -4&1
+ \end{bmatrix}
+ \end{align}
+Thus the  change of coordinates matrix from $B \to C$ is,
+\begin{equation*}
+  \begin{bmatrix}
+ 9&-2\\
+ -4&1
+ \end{bmatrix}
+\end{equation*}
+Consider the change of coordinates matrix from $C \to B$,
+
+\begin{align}
+ \begin{bmatrix}
+ -6&2\\
+ -1&0
+ \end{bmatrix}
+&\approx 
+ \begin{bmatrix}
+ 2&6\\
+ -1&-2
+ \end{bmatrix}\\
+  \begin{bmatrix}
+ 1&0\\
+ 0&1
+ \end{bmatrix}
+&\approx 
+ \begin{bmatrix}
+ 1&2\\
+ 4&9
+ \end{bmatrix}
+ \end{align}
+ Thus the change of coordinates matrix from $B \to C$,
+ \begin{equation*}
+ \begin{bmatrix}
+ 1&2\\
+ 4&9
+ \end{bmatrix}
+\end{equation*}
+
+\vspace{1in}
+
+
+%%%third problem
+\noindent\textbf{Exercise 4.7.14: } In $P_2$ find the change of coordinates matrix from the basis $B = \{1-3t^2,2+t-5t^2,1+2t\}$ to the standard basis $C = \{1,t,t^2\}$ then find the $B$-coordinate vector for $-1+2t$.
+\noindent \textbf{Solution: } Since $C$ is the standard basis, the coordinates of a polynomial from the standard basis are simply the coefficients. Therefore,
+\begin{equation*}
+[b_1]1 = 
+\begin{bmatrix}
+1\\
+0\\
+-3
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+[b_2]_c = 
+\begin{bmatrix}
+2\\
+1\\
+-5
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+[b_3]_c = 
+\begin{bmatrix}
+1\\
+2\\
+0
+\end{bmatrix}
+\end{equation*}
+Therefore the change of coordinates matrix from $B\to C$ is,
+\begin{equation*}
+\begin{bmatrix}
+1&2&1\\
+0&1&2\\
+-3&-5&0
+\end{bmatrix}
+\end{equation*}
+In order to calculate $B$-coordinate vector for $-1+2t$ we need the change of coordinates matrix from $C\to B$. A quick way to do so in this case is to just take the inverse of the change of coordinates matrix from $B\to C$.Therefore the change of coordinates matrix from $C\to B$,
+\begin{equation*}
+\begin{bmatrix}
+10&-5&3\\
+-6&3&-2\\
+3&-1&1
+\end{bmatrix}
+\end{equation*}
+Then all we need to do to calculate the  $B$-coordinate vector for $-1+2t$ is just multiply the coordinates to $-1+2t$ by the change of coordinate matrix from $C\to B$,
+\begin{equation*}
+\begin{bmatrix}
+10&-5&3\\
+-6&3&-2\\
+3&-1&1
+\end{bmatrix}
+\begin{bmatrix}
+-1\\
+2\\
+0
+\end{bmatrix}
+ = 
+ \begin{bmatrix}
+-20\\
+12\\
+-5
+\end{bmatrix}
+\end{equation*}
+\vspace{1in}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

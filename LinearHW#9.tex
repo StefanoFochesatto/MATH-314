@@ -1,0 +1,624 @@
+%%% Preamble starts here.
+\documentclass{amsart}
+%for the heading
+\usepackage{fancyhdr, enumerate}
+%for the picture. 
+\usepackage{tikz}
+%adjust the page width
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\linespread{1.1}
+
+%special commands for number sets
+\def\RR{{\mathbb R}}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\CC{{\mathbb C}}
+\def\PP{{\mathbb P}}
+
+\makeatletter
+\newcommand{\vo}{\vec{o}\@ifnextchar{^}{\,}{}}
+\makeatother
+
+% header
+\lhead{\sc  Linear Algebra: Homework 9}
+\chead{\sc Stefano Fochesatto } 
+\rhead{\today}
+\cfoot{}
+\pagestyle{fancy}
+
+%%%% Main document starts here.
+
+\begin{document}
+\thispagestyle{fancy}
+
+
+
+
+
+{\huge\textbf{Section 5.1:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 5.1.14: } Find a basis for the eigenspace corresponding to each value
+\begin{equation*}
+A = 
+\begin{bmatrix}
+1&0& -1\\ 
+1& -3& 0\\
+4 &-13& 1
+\end{bmatrix}
+, \lambda  = - 2
+\end{equation*}
+\noindent \textbf{Answer: } We know that the basis for the eigenspace of $-2$ corresponds to the solutions of the following equation,
+\begin{equation*}
+[A - (-2)I]x = 0
+\end{equation*}
+By substitution and some matrix algebra we get,
+\begin{equation*}
+[A - (-2)I] = 
+\begin{bmatrix}
+1&0& -1\\ 
+1& -3& 0\\
+4 &-13& 1
+\end{bmatrix}+
+\begin{bmatrix}
+2&0& 0\\ 
+0& 2& 0\\
+0 &0& 2
+\end{bmatrix} 
+=
+\begin{bmatrix}
+3&0& -1\\ 
+1& -1& 0\\
+4 &-13& 3
+\end{bmatrix} 
+\end{equation*}
+
+Now solving the system,
+\begin{align*}
+\begin{bmatrix}
+3&0& -1&0\\ 
+1& -1& 0&0\\
+4 &-13& 3&0
+\end{bmatrix} 
+&\approx
+\begin{bmatrix}
+1&0& \frac{-1}{3}&0\\ 
+0& 1& \frac{-1}{3}&0\\
+0&-13& \frac{13}{3}&0
+\end{bmatrix} \\
+&\approx
+\begin{bmatrix}
+1&0& \frac{-1}{3}&0\\ 
+0& 1& \frac{-1}{3}&0\\
+0 &0& 0&0
+\end{bmatrix}
+\end{align*}
+So we can see that the general solution the equation $[A - (-2I)]x  = 0$ is,
+\begin{equation*}
+x_3
+\begin{bmatrix}
+\frac{1}{3}\\
+\frac{1}{3}\\
+1
+\end{bmatrix}
+\end{equation*}
+So the basis for the eigenspace corresponding to the eigenvalue $\lambda  = -2$ is,
+\begin{equation*}
+\{ \begin{bmatrix}
+\frac{1}{3}\\
+\frac{1}{3}\\
+1
+\end{bmatrix}\}
+\end{equation*}
+
+\vspace{1in}
+
+
+%%%second problem
+\noindent\textbf{Exercise 5.1.20: } Without calculaiton, find oneeigen value and two linearly indepnedent eigenvectors of,
+\begin{equation*}
+\begin{bmatrix}
+5&5&5\\
+5&5&5\\
+5&5&5
+\end{bmatrix}.
+\end{equation*}
+Justify your answer.
+\noindent \textbf{Answer: } First we can see that, since the matrix is not invertible, then $\lambda = 0$ so all we have to do is find two linearly independent vectors that satisfy the following equation (a calculation but not really, like something times zero), 
+\begin{equation*}
+[A - (0 I)]x = 0.
+\end{equation*}
+Consider,
+\begin{equation*}
+ \begin{bmatrix}
+0\\
+-1\\
+1
+\end{bmatrix}, 
+\begin{bmatrix}
+1\\
+2\\
+-3
+\end{bmatrix}
+\end{equation*}
+
+\vspace{1in}
+
+%%%first problem
+\noindent\textbf{Exercise 5.1.22: }
+\begin{enumerate}
+\item If $Ax = \lambda x$ for some scalar $\lambda$ then $x$ is an eigenvector of $A$\\
+\noindent \textbf{Answer: }False. It is not enough for $Ax = \lambda x$, $x$ must also be non zero. This is by the definition of eigenvector " A eigenvector of an nxn $A$ is a nonzero vector x ..." 
+\vspace{1in}
+
+\item If $v_1$ and $v_2$ are linearly independent eigenvectors, then they correspond to distinct eigenvalues.\\
+\noindent \textbf{Answer: } False. It's possible to have 2 eigenvectors correspond to the same eigenvalues, The multiplicity of the eigenvalue must be 2. Consider example 4 in chapter 5.1
+\vspace{1in}
+
+\item A steady state vector for a stochastic matrix is actually an eigenvector.\\
+\noindent \textbf{Answer: } True. A steady state vector $x$ has the property that $Axx = x$ given, that $x$ isn not zero, this satisfies the definition of an eigenvector. 
+\vspace{1in}
+
+\item The eigenvalue of a matrix are on its main diagonal\\
+\noindent \textbf{Answer: } False. This is only true when the matrix is triangular because the determinant  is calculated by multiplying along the main diagonal, and when we go to find the characteristic equation we get a product that is factored and the roots become obvious.
+\vspace{1in}
+
+\item An eigenspace of $A$ is a null space of a certain matrix.\\
+\noindent \textbf{Answer: }True. the eigenspace is the solutions to the equation $[A - (\lambda I)]x = 0$ or alternatively you could say the null of $[A - (\lambda I)]$.
+\vspace{1in}
+\end{enumerate}
+
+
+%%%first problem
+\noindent\textbf{Exercise 5.1.32: } Let $A$ be the matrix of the linear transformation $T$. Without writing $A$, find an eigenvalue of $A$ and describe the eigenspace. $T$ is the linear transformation $\RR^{3}$ that rotates points about some line through the origin.\\
+\noindent \textbf{Answer: } Suppose the axis of rotation of $T$ is line $b$. so any vector $x$ that lies in $b$ has the property that $Tx = x$. Thus it must follow that $b$ is eigenspace and $\lambda = 1$ is the corresponding eigenvalue. There also exists the case such that $Tx = -x$, and this describes a vector that has been rotated 180 degrees by the axis of rotation about the origin (I think of Saturn's rings about Saturn's axis). So depending on the rotation there could exist an eigenspace that is a plane through the origin that is perpendicular to the line $b$ whose eigenvalue is $\lambda = -1$
+\vspace{1in}
+
+
+
+{\huge\textbf{Section 5.2:}}\\\\
+
+
+%%%first problem
+\noindent\textbf{Exercise 5.2.8: } Find the characteristic polynomial and the eigenvalues for the matrix,
+\begin{equation*}
+\begin{bmatrix}
+7 &-2\\
+2& 3
+\end{bmatrix}
+\end{equation*}
+\noindent \textbf{Answer: } First we start by setting up the matrix $[A - \lambda I]$,
+\begin{equation*}
+\begin{bmatrix}
+7 &-2\\
+2& 3
+\end{bmatrix}
+- 
+\begin{bmatrix}
+\lambda&0\\
+0& \lambda
+\end{bmatrix}
+ = 
+ \begin{bmatrix}
+7 - \lambda  &-2 \\
+2& 3 - \lambda
+\end{bmatrix}
+\end{equation*}
+Then we take the determinant of this new matrix, to get the characteristic equation and then we solve for lambda.
+\begin{align*}
+det[A - \lambda I] &= (7 - \lambda)(3  - \lambda) - (2)(-2)\\
+&=\lambda^2 -10\lambda + 25\\
+&=(\lambda - 5)(\lambda - 5) \text{ characteristic equation, set to zero and solve for $\lambda$.}
+\end{align*}
+So $\lambda = 5$ with multiplicity 2, where the characteristic polynomial is $0 =(\lambda - 5)^2$.
+\vspace{1in}
+
+
+%%%first problem
+\noindent\textbf{Exercise 5.2.18: }It can be shown that the algebraic multiplicity of an eigenvalue $\lambda$ is always greater than or equal to the dimension of the eigenspace corresponding to $\lambda$. Find $h$ in the matrix $A$ such that the eigenspace for 5 is two dimensional. 
+\begin{equation*}
+\begin{bmatrix}
+5  &-2  &6 & -1\\
+0   &3  &h  &0\\
+0  & 0  &5   &4\\
+0  & 0&  0  &1
+\end{bmatrix}
+\end{equation*}
+
+\noindent \textbf{Answer: } Note that since the matrix $A$ is in triangular form the eigenvalues will be $\lambda = 5, 3, 1$ and 5 has multiplicity 2. You can see that very clearly by looking at $[A - \lambda I]$ and then the determinant gives a characteristic equation that is already nicely factored. So all we have to do is set up the folowing matrix equation $[A - 5I]x = 0$, and solve for h such that we have two free variables.
+\begin{align*}
+\begin{bmatrix}
+5 -5 &-2  &6 & -1& 0\\
+0   &3-5  &h  &0& 0\\
+0  & 0  &5-5   &4& 0\\
+0  & 0&  0  &1-5& 0
+\end{bmatrix}
+&\approx
+\begin{bmatrix}
+0 &-2  &6 & -1& 0\\
+0   &-2  &h  &0& 0\\
+0  & 0  &0   &4& 0\\
+0  & 0&  0  &-4& 0
+\end{bmatrix}\\
+&\approx
+\begin{bmatrix}
+0 &-2  &6 & -1& 0\\
+0   &0  &h-6  &1& 0\\
+0  & 0  &0   &4& 0\\
+0  & 0&  0  &4& 0
+\end{bmatrix}\\
+&\approx
+\begin{bmatrix}
+0 &-2  &6 & -1& 0\\
+0   &0  &h-6  &1& 0\\
+0  & 0  &0   &1& 0\\
+0  & 0&  0  &0& 0
+\end{bmatrix}
+\end{align*}
+So in order for $\lambda = 5$ to correspond to a two-dimensional eigenspace, $h = 6$ (we want two free variable).
+\vspace{1in}
+
+
+
+%%%first problem
+\noindent\textbf{Exercise 5.2.22: }
+
+\begin{enumerate}
+
+\item If $A$ is 3x3, with columns $a_1, a_2, and a_3$ then $det A$ equals the volume of the parallelpiped determined by those columns.\\
+\noindent \textbf{Answer: }False. It is possible that the determinant is negative, and negative volume make no sense. The absolute value of the determinant corresponds to the volume. 
+\vspace{1in}
+
+
+\item $det A^{T} = -1 det A$\\
+\noindent \textbf{Answer: } False. The determinant of the transpose of a matrix is the same as the determinant of the matrix. Consider the identity matrix with determinant 1, the transpose if the identity matrix is also the identity matrix with determinant 1.
+\vspace{1in}
+
+
+\item The multiplicity of a root $r$ of the characteristic equation of $A$ is called the algebraic multiplicity of $r$ as an eigenvalue of $A$\\
+\noindent \textbf{Answer: }True. By definition of algebraic multiplicity found in the bottom of p.278
+\vspace{1in}
+
+
+\item A row replacement operation does not change the eigenvalues.\\
+\noindent \textbf{Answer: }False. Consider the big fat warning on page 270 that explicitly says that row replacement cannot be used to find eigenvalues.
+\vspace{1in}
+
+\end{enumerate}
+
+
+
+
+
+%%%first problem
+\noindent\textbf{Exercise 5.2.24: } Show that if $A$ and $B$ are similar then $det A = det B$\\
+\noindent \textbf{Answer: } Recall that two matrices are similar if they have the same characteristic polynomial, and as a consequence the same eigenvalues. It also means that there exists a matrix $P$ such that $A = PBP^-1$. Through some matrix algebra we get the desired result,
+\begin{align*}
+det(A) &= det(PBP^{-1})\\
+&= det(P)det(B)det(P^{-1})\\
+&= det(P)det(B)\frac{1}{det(P)}\\
+&= det(B)
+\end{align*}
+\vspace{1in}
+
+
+
+
+{\huge\textbf{Section 5.3:}}\\\\
+
+
+%%%first problem
+\noindent\textbf{Exercise 5.3.2: } Let $A = PDP^{-1}$, compute $A^4$
+\begin{equation*}
+P = 
+\begin{bmatrix}
+2& - 3\\
+ -3 & 5
+\end{bmatrix},
+D = 
+\begin{bmatrix}
+1&0\\
+ 0 & \frac{1}{2}
+\end{bmatrix}
+\end{equation*}
+
+\noindent \textbf{Answer: } First we need to find the inverse of the matrix $P$. Using the  inverse rule for 2x2 matrices we get that,
+\begin{equation*}
+P^{-1} = 
+\begin{bmatrix}
+5& 3\\
+ 3 & 2
+\end{bmatrix},
+\end{equation*}
+So by substitution we get,
+\begin{align*}
+A^4& = 
+\begin{bmatrix}
+2& - 3\\
+ -3 & 5
+\end{bmatrix}
+\begin{bmatrix}
+1^4&0\\
+ 0 & (\frac{1}{2})^4
+\end{bmatrix}
+\begin{bmatrix}
+5& 3\\
+ 3 & 2
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+2& - 3\\
+ -3 & 5
+\end{bmatrix}
+\begin{bmatrix}5&3\\ \frac{3}{16}&\frac{1}{8}\end{bmatrix}\\
+&=
+\begin{bmatrix}\frac{151}{16}&\frac{45}{8}\\ -\frac{225}{16}&-\frac{67}{8}\end{bmatrix}.
+\end{align*}
+\vspace{1in}
+
+
+
+
+
+%%%first problem
+\noindent\textbf{Exercise 5.3.22: } $A, B, P, and D$ are n x n matrices. 
+\begin{enumerate}
+
+\item $A$ is diagonalizable if $A$ has $n$ eigenvectors.\\
+\noindent \textbf{Answer: }False. Theorem 6 states that the eigenvectors must be distinct. 
+\vspace{1in}
+
+
+\item If $A$ is diagonalizable, then $A$ has $n$ distinct eigenvalues.\\
+\noindent \textbf{Answer: }False. It is possible to have $A$ be diagonalizable with indistinct eigenvalues as long as the dimension of the eigenspace is equal to the multiplicity to the eigenvalue.
+\vspace{1in}
+
+\item If $AP = PD$, With $D$ diagonal, then the nonzero columns of $P$ must be eigenvectors.\\
+\noindent \textbf{Answer: }True. Consider Theorem 5, " In this case entries to $D$ are eigenvalues of $A$ that correspond, respectively to the eigenvectors in $P$"
+\vspace{1in}
+
+\item If $A$ is invertible then $A$ is diagonalizable.\\
+\noindent \textbf{Answer: }False. For a matrix to be diagonalizable, $A$ must have $n$ linearly independent eigenvectors. There is no direct relation between diagonalizable and invertible.
+\vspace{1in}
+
+\end{enumerate}
+
+
+%%%first problem
+\noindent\textbf{Exercise 5.3.23: } $A$ is a 5x5 matrix with two eigenvalues. One eigenspace is three-dimensional, and the other eigenspace is two-dimensional. Is $A$ diagonalizable?\\
+\noindent \textbf{Answer: } Consider axiom $b$ of Theorem 7 which states " The matrix $A$ is diagonalizable if and only if the sum of the dimensions of the eigenspaces equals $n$..." From that we can assert that assert that $A$ is diagonalizable because the dimensions sum to 5.
+\vspace{1in}
+
+
+
+
+{\huge\textbf{Section 5.4:}}\\\\
+
+
+%%%first problem
+\noindent\textbf{Exercise 5.4.6: } Let $T: P_2 \to P_4$ be the transformation that maps polynomial $p(t)$ into the polynomial $p(t) + t^2p(t)$\\
+
+\begin{enumerate}
+
+\item Find the image of $p(t) = 2-t+t^2$
+\noindent \textbf{Answer: } All we have to do is plug into the transformation,
+\begin{equation*}
+T(p(t)) = (2-t+t^2) + t^2(2-t+t^2) = t^4-t^3+3t^2-t+2 
+\end{equation*}
+\vspace{1in}
+
+
+\item Show that $T$ is a linear transformation.\\ 
+\noindent \textbf{Answer: } First lets prove that $T$ respects vector addition.\\
+Suppose $a,b \in P_2$. Consider 
+\begin{align*}
+T(a+b) &= a+b + t^2(a+b)\\
+&= a+b + t^2a + t^2b\\
+&= a+ t^2a+ b + t^2b\\
+&= T(a)+ T(b)
+\end{align*}
+Now lets prove that $T$ respects scalar multiplication.\\
+Suppose $k \in \RR$ and $a \in P_2$. Consider $T(ka)$,
+\begin{align*}
+T(ka) &= ka +t^2(ka)\\
+ &= k(a +t^2(a))\\
+&= k(T(a))
+\end{align*}
+Thus $T$ is a linear transformation. 
+\vspace{1in}
+
+\item Find the matrix for $T$ relative to the bases $\{1, t, t^2 \}$ and $\{ 1, t, t^2, t^3, t^4\}$ .\\
+
+\noindent \textbf{Answer: }Let $ A = \{1, t, t^2 \}$ and $B = \{ 1, t, t^2, t^3, t^4\}$. Consider $T(a_1) = (1)+t^2(1)$ so we can say that,
+\begin{equation*}
+[T(a_1)]_b = 
+\begin{bmatrix}
+1\\
+0\\
+1\\
+0\\
+0
+\end{bmatrix}
+\end{equation*}
+And we can do the same for the rest of the elements in $A$. Consider $T(a_2) = (t) + t^2(t)$,
+\begin{equation*}
+[T(a_2)]_b = 
+\begin{bmatrix}
+0\\
+1\\
+0\\
+1\\
+0
+\end{bmatrix}
+\end{equation*}
+Now $T(a_3) = (t^2)+t^2(t^2)$,
+\begin{equation*}
+[T(a_3)]_b = 
+\begin{bmatrix}
+0\\
+0\\
+1\\
+0\\
+1
+\end{bmatrix}
+\end{equation*}
+So the matrix for $T$ relative to $A$ and $B$ is,
+\begin{equation*}
+[T(a)]_b = 
+\begin{bmatrix}
+1&0&0\\
+0&1&1\\
+1&0&0\\
+0&1&1\\
+0&0&0
+\end{bmatrix}
+\end{equation*}
+\vspace{1in}
+
+\end{enumerate}
+
+
+\noindent\textbf{Exercise 5.4.10: } Define $T: P_3 \to R^4$ by,
+\begin{equation*}
+T(p)= 
+\begin{bmatrix}
+p(-3)\\
+p(-1)\\
+p(1)\\
+p(3)
+\end{bmatrix}
+\end{equation*}\\
+
+\begin{enumerate}
+\item Show that $T$ is a linear transformation.\\
+\noindent \textbf{Answer: } First lets prove that $T$ respects vector addition.\\
+Suppose $a,b \in P_3$. Consider 
+\begin{align*}
+T(a+b) &=
+\begin{bmatrix}
+(a+b)(-3)\\
+(a+b)(-1)\\
+(a+b)(1)\\
+(a+b)(3)
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+-3a-3b\\
+-a-b\\
+a+b\\
+3a+3b
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+-3a\\
+-a\\
+a\\
+3a
+\end{bmatrix}
++
+\begin{bmatrix}
+-3b\\
+-b\\
+b\\
+3b
+\end{bmatrix}\\
+&= T(a)+t(b)
+\end{align*}
+Now lets prove that $T$ respects scalar multiplication.\\
+Suppose $k \in \RR$ and $a \in P_3$. Consider $T(ka)$,
+\begin{align*}
+T(ka) &= 
+\begin{bmatrix}
+(ka)(-3)\\
+(ka)(-1)\\
+(ka)(1)\\
+(ka)(3)
+\end{bmatrix}\\
+ &= 
+ k
+\begin{bmatrix}
+(a)(-3)\\
+(a)(-1)\\
+(a)(1)\\
+(a)(3)
+\end{bmatrix}\\
+&=kT(a)
+\end{align*}
+Thus $T$ is a linear transformation. 
+\vspace{1in}
+
+\item Find the matrix relative to the basis $\{1,t,t^2,t^3\}$ for $P_3$ and the standard basis for $R^4$.\\
+\noindent \textbf{Answer: } Let $A = \{1,t,t^2,t^3\}$ and $E = \{e_1,e_2,e_3,e_4\}$
+Consider $T(a_1)$, since we are going to the standard basis  we can say that,
+\begin{equation*}
+[T(a_1)]_E = 
+\begin{bmatrix}
+1\\
+1\\
+1\\
+1
+\end{bmatrix}
+\end{equation*}
+And for $T(a_2),T(a_3), T(a_4)$,
+\begin{equation*}
+[T(a_2)]_E = 
+\begin{bmatrix}
+-3\\
+-1\\
+1\\
+3
+\end{bmatrix},
+[T(a_3)]_E = 
+\begin{bmatrix}
+9\\
+1\\
+1\\
+9
+\end{bmatrix},
+[T(a_4)]_E = 
+\begin{bmatrix}
+-27\\
+-1\\
+1\\
+27
+\end{bmatrix}
+\end{equation*}
+Thus the matrix for $T$ relative to $A$ and $E$ is,
+\begin{equation*}
+[T(A)]_E = 
+\begin{bmatrix}
+1& -3& 9& -27\\
+1 &-1 &1 &-1\\
+1 &1 & 1& 1\\
+1 &3 &9 &27
+\end{bmatrix}
+\end{equation*}
+\vspace{1in}
+	
+\end{enumerate}
+
+
+
+
+\noindent\textbf{Exercise 5.4.22: } If $A$ is diagonalizable and $B$ is similar to $A$, then $B$ is also diagonalizable. Verify!\\
+\noindent \textbf{Answer: } By the definition of diagonalizable, if $A$ is diagonalizable then there exists matrices $P$ and $D$(diagonal matrix) such that $A = PDP^{-1}$ By the definition of similar, if $B$ is similar to $A$ then there exists a matrix $W$ such that, $B = WAW^{-1}$. By substitution we get the expected result,
+\begin{align*}
+B &= WAW^{-1}\\
+&= W(PDP^{-1})W^{-1}\\
+&= (WP)D(P^{-1}W^{-1})\\
+&= (WP)D(WP)^{-1}
+\end{align*}
+Therefore by the definition of diagonalizable $B$ is diagonalizable. 
+\vspace{1in}
+
+
+
+
+
+
+
+
+
+\end{document}

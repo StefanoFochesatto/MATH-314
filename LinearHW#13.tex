@@ -1,0 +1,141 @@
+%%% Preamble starts here.
+\documentclass{amsart}
+%for the heading
+\usepackage{fancyhdr, enumerate}
+%for the picture. 
+\usepackage{tikz}
+%adjust the page width
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\linespread{1.1}
+
+%special commands for number sets
+\def\RR{{\mathbb R}}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\CC{{\mathbb C}}
+\def\PP{{\mathbb P}}
+
+\makeatletter
+\newcommand{\vo}{\vec{o}\@ifnextchar{^}{\,}{}}
+\makeatother
+
+% header
+\lhead{\sc  Linear Algebra: Homework 13}
+\chead{\sc Stefano Fochesatto } 
+\rhead{\today}
+\cfoot{}
+\pagestyle{fancy}
+
+%%%% Main document starts here.
+
+\begin{document}
+\thispagestyle{fancy}
+
+
+
+
+
+{\huge\textbf{Section 6.8:}}\\\\
+%%%first problem
+\noindent\textbf{Exercise 6.8.8: } Find the third order Fourier approximation to $f(t) = t - 1$ in the space $C[0 , 2\pi]$ and with the inner product defined as ,
+\begin{equation*}
+<f,g> = \int_{0}^{2\pi}f(t)g(t)dt
+\end{equation*}
+\noindent \textbf{Solution: } The first step is to solving this problem is seeing if we can find a general form of the Fourier coefficients, by evaluating the following expressions,
+\begin{equation*}
+a_k = \frac{<f, cos(kt)>}{<cos(kt),cos(kt)>}  \text{  $k \geq 1$ }
+\end{equation*}
+\begin{equation*}
+b_k = \frac{<f, sin(kt)>}{<sin(kt),sin(kt)>}  \text{ $k \geq 1$ }
+\end{equation*}
+So by the definition of our inner product, 
+\begin{equation*}
+a_k = \frac{ \int_{0}^{2\pi}(t - 1)cos(kt)dt  }{\int_{0}^{2\pi}cos(kt)^2dt}
+\end{equation*}
+\begin{equation*}
+b_k = \frac{ \int_{0}^{2\pi}(t - 1)sin(kt)dt  }{\int_{0}^{2\pi}sin(kt)^2dt}
+\end{equation*}
+Evaluating each denominator, starting with $a_k$\\
+\begin{align*}
+\int_{0}^{2\pi}cos(kt)^2dt &= \int_{0}^{2\pi} \frac{1 + cos(2kt)}{2}dt \text{  from half angle trig sub}\\
+&= \frac{1}{2} \int_{0}^{2\pi}1 + cos(2kt)dt\\
+& = \frac{1}{2}(2\pi + \frac{sin(2kt)}{2k} |_{0}^{2\pi})\\
+& = \pi   \text{ sin term evaluates to zero}
+\end{align*}
+For $b_k$ the solution is very similar,
+\begin{align*}
+\int_{0}^{2\pi}sin(kt)^2dt &= \int_{0}^{2\pi} \frac{1 - cos(2kt)}{2}dt \text{  from half angle trig sub}\\
+&= \frac{1}{2} \int_{0}^{2\pi}1 - cos(2kt)dt\\
+& = \frac{1}{2}(2\pi  - \frac{sin(2kt)}{2k} |_{0}^{2\pi})\\
+& = \pi   \text{ sin term evaluates to zero}
+\end{align*}
+Solving for $a_k$,
+\begin{align*}
+a_k &= \frac{1}{\pi} \int_{0}^{2\pi}(t - 1)cos(kt)dt\\
+& = \frac{1}{\pi} (\int_{0}^{2\pi}tcos(kt)dt - \int_{0}^{2\pi}cos(kt) dt)\\
+& =  \frac{1}{\pi} \int_{0}^{2\pi}tcos(kt)dt\\
+&=  \frac{1}{\pi} \int_{0}^{k2\pi}\frac{ucos(u)}{k}du \text{,      (u = kt substitution)}\\
+&=  \frac{1}{k\pi} \int_{0}^{k2\pi}ucos(u)du\\
+& = \frac{1}{k\pi} usin(u) |_{0}^{k2\pi} - \int_{0}^{k2\pi}sin(u)du   \text{,    ($u = u$ and $dv = cos(u)$ by parts) }\\
+&= \frac{1}{k\pi} [usin(u) + cos(u)]_{0}^{k2\pi}\\
+&= \frac{0}{k\pi}\\
+&= 0\\
+\end{align*}
+Now solving for $b_k$,
+\begin{align*}
+b_k &= \frac{1}{\pi} \int_{0}^{2\pi}(t - 1)sin(kt)dt\\
+& = \frac{1}{\pi} (\int_{0}^{2\pi}tsin(kt)dt - \int_{0}^{2\pi}sin(kt) dt)\\
+& =  \frac{1}{\pi} \int_{0}^{2\pi}tsin(kt)dt\\
+& = \frac{1}{\pi} [\frac{-tcos(kt)}{k}]_{0}^{2\pi} - \int_{0}^{2\pi} \frac{-cos(kt)}{k}dt  \text{,    ($u = t$ and $dv = sin(kt)$ by parts) }\\
+& = \frac{1}{\pi} [\frac{-tcos(kt)}{k} - \frac{-sin(kt)}{k^2}]_{0}^{2\pi}\\
+ & = \frac{1}{\pi} [\frac{-ktcos(kt)-sin(kt)}{k^2}]_{0}^{2\pi}\\
+   & = \frac{1}{k^2 \pi} [{-ktcos(kt)-sin(kt)}]_{0}^{2\pi}\\
+  & = \frac{k\pi (-2)}{k^2\pi}\\
+  & = \frac{-2}{k}
+\end{align*}
+So know we can almost find the $k^{th}$ order Fourier approximation $f(t) = t - 1$, the problem is we need the first, coefficient on the constant term in the approximation. To compute it we literally do the same thing as before except instead of using sine and cosine functions we compute the inner product of the function $f(t) = t - 1$ with $1$ 
+\begin{equation*}
+\frac{a_0}{2} = \frac{<f(t),1>}{<1,1>} = \frac{1}{2\pi} \int_{0}^{2\pi}t - 1dt = \pi - 1
+\end{equation*}
+Thus the third order Fourier approximation for the equation $f(t) = t - 1$,
+\begin{equation*}
+\pi - 1- \frac{2}{1}sin(t) - \frac{2}{2}sin(2t) - \frac{2}{3} sin(3t)
+\end{equation*}
+
+
+
+
+\vspace{1in}
+
+
+
+%%%second problem
+\noindent\textbf{Exercise 6.8.12: } Find the third-order Fourier approximation to $cos^3t$, without performing any integration calculations.\\
+\noindent \textbf{Solution: } Since our approximating function is already a trigonometric function, we might be able to use trig identities and algebra to get our function into the form of a Fourier approximation.
+\begin{align*}
+cos^3(t) &= cos^2(t) cos(t)\\
+&= (\frac{1}{2}+\frac{cos(2t)}{2})cos(t)\\
+&= \frac{cos(t)}{2}+\frac{cos(2t)cos(t)}{2}\\
+&= \frac{cos(t)}{2}+\frac{1}{2}(cos(2t)cos(t))\\
+&= \frac{cos(t)}{2}+\frac{1}{4}(cos(2t-t)+cos(2t+t))\\
+&= \frac{cos(t)}{2}+\frac{1}{4}(cos(t)+cos(3t))\\
+&= \frac{cos(t)}{2}+\frac{cos(t)}{4}+\frac{cos(3t)}{4}\\
+&= \frac{3cos(t)}{4}+\frac{cos(3t)}{4}\\
+\end{align*}
+Now we have an expression that is a trigonometric polynomial of order 3, therefore it is a third order Fourier approximation to $cos^3(t)$.
+\vspace{1in}
+
+
+
+
+
+
+
+
+
+\end{document}
